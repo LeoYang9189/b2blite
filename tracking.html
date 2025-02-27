@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>货物追踪 - WallTech B2B平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 引入字体图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 货物追踪页面样式 */
+        .tracking-banner {
+            background-image: url('assets/images/bg1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 120px 0 0 0;
+            color: #fff;
+            display: flex;
+            align-items: flex-end;
+            min-height: 330px;
+        }
+        
+        .tracking-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 18, 50, 0.7);
+        }
+        
+        .tracking-banner .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+            justify-content: flex-start;
+        }
+        
+        .tracking-banner h1 {
+            position: relative;
+            text-align: left;
+            font-size: 32px;
+            margin: 0;
+            padding: 0 0 30px 0;
+        }
+        
+        .tracking-section {
+            padding: 30px 0;
+            background-color: #f8f9ff;
+        }
+        
+        .tracking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .tracking-search {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 下拉选择框样式 */
+        .search-type-selector {
+            position: relative;
+            width: 350px;
+        }
+        
+        .search-type-current {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border: 1px solid #e0e6f7;
+            background-color: #fff;
+            border-radius: 4px 0 0 4px;
+            cursor: pointer;
+            height: 51px;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        .search-type-current span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 90%;
+        }
+        
+        .search-type-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e0e6f7;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 10;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-type-option {
+            padding: 12px 15px;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .search-type-option:hover {
+            background-color: #f8f9ff;
+        }
+        
+        .search-type-selector.active .search-type-options {
+            display: block;
+        }
+        
+        .search-input-wrapper input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e0e6f7;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-input-wrapper input:focus {
+            border-color: #1e5aa0;
+        }
+        
+        .search-input-wrapper button {
+            background-color: #1e5aa0;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .search-input-wrapper button:hover {
+            background-color: #164785;
+        }
+        
+        .tracking-results {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .tracking-timeline {
+            flex: 0 0 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+        }
+        
+        .tracking-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .detail-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+        }
+        
+        .detail-card h3 {
+            font-size: 18px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #e0e6f7;
+        }
+        
+        .timeline-item:last-child::before {
+            height: 0;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: -40px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .timeline-icon.completed {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .timeline-icon.current {
+            background-color: #1e5aa0;
+            color: white;
+        }
+        
+        .timeline-icon.pending {
+            background-color: #ccc;
+            color: #666;
+        }
+        
+        .timeline-content {
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .timeline-date {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .timeline-location {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* 详细信息表格样式 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .ship-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .ship-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #1e5aa0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .ship-details {
+            flex: 1;
+        }
+        
+        .ship-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .port-details {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .port-item {
+            flex: 1;
+        }
+        
+        .port-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .port-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .port-date {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        @media (max-width: 992px) {
+            .tracking-results {
+                flex-direction: column;
+            }
+            
+            .tracking-timeline {
+                flex: auto;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .search-input-wrapper {
+                flex-direction: column;
+            }
+            
+            .search-input-wrapper input {
+                width: 100%;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .search-input-wrapper button {
+                width: 100%;
+                border-radius: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <a href="tel:021-65143931" class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>客服电话: 021-65143931转826</span>
+                        </a>
+                        <a href="mailto:b2b-service@walltechsystem.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>邮箱: b2b-service@walltechsystem.com</span>
+                        </a>
+                    </div>
+                    <div class="language-selector">
+                        <div class="current-lang">
+                            <i class="fas fa-globe"></i>
+                            <span class="current-lang-text">中文</span>
+                            <i class="fas fa-chevron-down" style="font-size: 10px; background: none; width: auto; height: auto;"></i>
+                        </div>
+                        <div class="lang-options">
+                            <a href="#" class="lang-option active" data-lang="zh">中文</a>
+                            <a href="#" class="lang-option" data-lang="en">English</a>
+                            <a href="#" class="lang-option" data-lang="jp">日本語</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="B2B平台 Logo">
+                        </a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="tracking.html" class="active">货物追踪</a></li>
+                            <li><a href="#">业务介绍</a></li>
+                            <li><a href="#">资讯中心</a></li>
+                            <li><a href="#">关于我们</a></li>
+                        </ul>
+                    </nav>
+                    <div class="action-btn">
+                        <a href="#" class="btn btn-primary">注册/登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 货物追踪横幅 -->
+    <section class="tracking-banner">
+        <div class="container">
+            <h1>货物跟踪</h1>
+        </div>
+    </section>
+
+    <!-- 货物追踪部分 -->
+    <section class="tracking-section">
+        <div class="tracking-container">
+            <!-- 搜索输入框 -->
+            <div class="tracking-search">
+                <div class="search-input-wrapper">
+                    <div class="search-type-selector" id="searchTypeSelector">
+                        <div class="search-type-current" id="searchTypeCurrent">
+                            <span>HBL NO./ MBL NO./业务参考号</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="search-type-options">
+                            <div class="search-type-option" data-type="box">箱号</div>
+                            <div class="search-type-option" data-type="bill">HBL NO./ MBL NO./业务参考号</div>
+                        </div>
+                    </div>
+                    <input type="text" id="tracking-input" placeholder="HBL NO./ MBL NO./业务参考号" value="XYE25021657">
+                    <button id="search-btn">
+                        <i class="fas fa-search"></i>
+                        查询
+                    </button>
+                </div>
+            </div>
+
+            <!-- 追踪结果 -->
+            <div class="tracking-results" id="tracking-results">
+                <!-- 左侧时间线 -->
+                <div class="tracking-timeline">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">订舱 (订舱完成)</div>
+                                <div class="timeline-date">2025-02-25 14:23:41</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon pending">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">提单 (未制发)</div>
+                                <div class="timeline-date">-</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon pending">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">离港 (未开始)</div>
+                                <div class="timeline-date">-</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon pending">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">已到港 (未开始)</div>
+                                <div class="timeline-date">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右侧详细信息 -->
+                <div class="tracking-details">
+                    <!-- 基本信息卡片 -->
+                    <div class="detail-card">
+                        <h3>基本信息</h3>
+                        
+                        <!-- 船舶信息 -->
+                        <div class="ship-info">
+                            <div class="ship-icon">
+                                <i class="fas fa-ship"></i>
+                            </div>
+                            <div class="ship-details">
+                                <div class="ship-name">船名 / 航次</div>
+                                <div class="info-value">MARTI STAR II/V.2503E</div>
+                            </div>
+                        </div>
+                        
+                        <!-- 港口信息 -->
+                        <div class="port-details">
+                            <div class="port-item">
+                                <div class="ship-icon" style="width: 36px; height: 36px; font-size: 14px;">
+                                    <i class="fas fa-anchor"></i>
+                                </div>
+                                <div class="port-label">起运港</div>
+                                <div class="port-name">ZHAPU,CHINA</div>
+                                <div class="port-date">ETD</div>
+                                <div class="port-name">2025-02-28 00:00:00</div>
+                            </div>
+                            
+                            <div class="port-item">
+                                <div class="ship-icon" style="width: 36px; height: 36px; font-size: 14px;">
+                                    <i class="fas fa-anchor"></i>
+                                </div>
+                                <div class="port-label">目的港</div>
+                                <div class="port-name">NAGOYA</div>
+                                <div class="port-date">ETA</div>
+                                <div class="port-name">2025-03-04 00:00:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 详细信息卡片 -->
+                    <div class="detail-card">
+                        <h3>详细信息</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">箱型</div>
+                                <div class="info-value">1*20GP</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">客户参考号</div>
+                                <div class="info-value">25QX0009</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">MBL No.</div>
+                                <div class="info-value">NOSZP25NG04330</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">HBL No.</div>
+                                <div class="info-value">PCS</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">XYE25021657</div>
+                                <div class="info-value">200</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">CBM</div>
+                                <div class="info-value">3300</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">12.9</div>
+                                <div class="info-value"></div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">箱号</div>
+                                <div class="info-value">NBYU0149017</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">封号</div>
+                                <div class="info-value">NOS3215854</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 附件信息卡片 -->
+                    <div class="detail-card">
+                        <h3>附件信息</h3>
+                        <p>暂无附件</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="WallTech B2B Logo">
+                    <p>选择 WallTech B2B 是您业务合作的明智之选。我们致力于为您提供最优质的B2B服务体验。</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="xiaohongshu"><span>小红书</span></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>地址</h3>
+                        <ul>
+                            <li>上海市虹口区<br>周家嘴路699号中垠广场A座9F<br><br>工作时间：<br>周一至周五  9:00-18:00</li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>关于我们</h3>
+                        <ul>
+                            <li><a href="#">公司简介</a></li>
+                            <li><a href="#">发展历程</a></li>
+                            <li><a href="#">企业文化</a></li>
+                            <li><a href="#">招贤纳士</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>隐私政策</h3>
+                        <ul>
+                            <li><a href="#">用户协议</a></li>
+                            <li><a href="#">隐私条款</a></li>
+                            <li><a href="#">Cookie政策</a></li>
+                            <li><a href="#">信息安全</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 All Rights Reserved 版权所有:上海沃行信息技术有限公司 沪ICP备07034486号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 悬浮客服图标 -->
+    <div class="floating-service">
+        <div class="service-icon" id="serviceIcon">
+            <img src="assets/images/chat.png" alt="在线客服">
+        </div>
+    </div>
+    
+    <!-- 引入Coze Chat SDK脚本 -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单高亮
+            const currentLocation = location.href;
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                if(link.href === currentLocation) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // 搜索按钮点击事件
+            const searchBtn = document.getElementById('search-btn');
+            const trackingResults = document.getElementById('tracking-results');
+            
+            if(searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    // 显示结果区域（实际项目中这里会发送API请求）
+                    trackingResults.style.display = 'flex';
+                    // 滚动到结果区域
+                    trackingResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+            
+            // 初始化Coze Chat客户端
+            window.cozeWebChatClient = new CozeWebSDK.WebChatClient({
+                config: {
+                    bot_id: '7476024207646769178'
+                },
+                componentProps: {
+                    title: 'AI智能客服',
+                    chatIcon: 'assets/images/chat.png',
+                    chatBtnStyle: {
+                        display: 'none' // 隐藏默认的聊天按钮，使用我们自定义的按钮
+                    },
+                    defaultOpen: false, // 默认不打开
+                    containerStyle: {
+                        zIndex: 10000 // 确保层级高于页面其他元素
+                    }
+                },
+                auth: {
+                    type: 'token',
+                    token: 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ',
+                    onRefreshToken: function() {
+                        return 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ';
+                    }
+                }
+            });
+            
+            // 点击客服图标显示聊天窗口
+            const serviceIcon = document.getElementById('serviceIcon');
+            if(serviceIcon) {
+                serviceIcon.addEventListener('click', function() {
+                    if (window.cozeWebChatClient) {
+                        if (window.cozeWebChatClient.open && typeof window.cozeWebChatClient.open === 'function') {
+                            window.cozeWebChatClient.open();
+                        } else if (window.cozeWebChatClient.component && window.cozeWebChatClient.component.setOpen) {
+                            window.cozeWebChatClient.component.setOpen(true);
+                        } else {
+                            console.error('无法找到打开聊天窗口的方法，请检查Coze SDK版本');
+                        }
+                    }
+                });
+            }
+            
+            // 语言切换功能
+            const langOptions = document.querySelectorAll('.lang-option');
+            const currentLangText = document.querySelector('.current-lang-text');
+            
+            langOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    langOptions.forEach(lang => lang.classList.remove('active'));
+                    
+                    // 添加active类到当前选项
+                    this.classList.add('active');
+                    
+                    // 更新当前语言显示
+                    const langText = this.textContent.trim();
+                    currentLangText.textContent = langText;
+                    
+                    // 存储用户语言偏好
+                    localStorage.setItem('preferredLanguage', this.getAttribute('data-lang'));
+                    
+                    // 临时输出语言切换信息
+                    console.log(`已切换至${langText}版本`);
+                });
+            });
+            
+            // 搜索类型下拉菜单
+            const searchTypeSelector = document.getElementById('searchTypeSelector');
+            const searchTypeCurrent = document.getElementById('searchTypeCurrent');
+            const searchTypeOptions = document.querySelectorAll('.search-type-option');
+            const trackingInput = document.getElementById('tracking-input');
+            
+            if(searchTypeSelector && searchTypeCurrent) {
+                // 点击选择器显示/隐藏选项
+                searchTypeCurrent.addEventListener('click', function() {
+                    searchTypeSelector.classList.toggle('active');
+                });
+                
+                // 点击选项更新当前选择
+                searchTypeOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        const type = this.getAttribute('data-type');
+                        const text = this.textContent;
+                        
+                        // 更新显示的文本
+                        searchTypeCurrent.querySelector('span').textContent = text;
+                        
+                        // 更新输入框占位符
+                        if(type === 'box') {
+                            trackingInput.placeholder = '请输入箱号';
+                        } else {
+                            trackingInput.placeholder = 'HBL NO./ MBL NO./业务参考号';
+                        }
+                        
+                        // 关闭下拉菜单
+                        searchTypeSelector.classList.remove('active');
+                    });
+                });
+                
+                // 点击页面其他地方关闭下拉菜单
+                document.addEventListener('click', function(e) {
+                    if(!searchTypeSelector.contains(e.target)) {
+                        searchTypeSelector.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

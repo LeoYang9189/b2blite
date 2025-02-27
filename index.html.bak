@@ -50,7 +50,7 @@
                     <nav class="nav-menu">
                         <ul>
                             <li><a href="#" class="active">首页</a></li>
-                            <li><a href="tracking.html">货物追踪</a></li>
+                            <li><a href="#">货物追踪</a></li>
                             <li><a href="#">业务介绍</a></li>
                             <li><a href="#">资讯中心</a></li>
                             <li><a href="#">关于我们</a></li>
@@ -77,7 +77,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>这里是您公司的主Slogan</h1>
-                <p>这里是您的副Slogan,示例文字可以多一点<br>注意!注意！轻量版没有下面搜索框里的运价查询！！其他没差别！！</p>
+                <p>这里是您的副Slogan,示例文字可以多一点</p>
                 
                 <!-- 搜索表单 -->
                 <div class="search-form">
@@ -100,12 +100,12 @@
                                 <i class="fas fa-search"></i>
                                 <input type="text" placeholder="请输入订单号">
                             </div>
-                            <a href="tracking.html" class="search-btn">搜索</a>
+                            <button class="search-btn">搜索</button>
                         </div>
                         <div class="additional-links">
-                            <a href="#" class="qr-tooltip"><i class="fas fa-qrcode"></i> 公众号<div class="qr-image"><img src="assets/images/qr.jpg" alt="公众号二维码"></div></a>
-                            <a href="#" class="qr-tooltip"><i class="fas fa-mobile-alt"></i> 微信小程序<div class="qr-image"><img src="assets/images/chengxu.png" alt="微信小程序二维码"></div></a>
-                            <a href="#" class="customer-service"><i class="fas fa-headset"></i> 在线客服</a>
+                            <a href="#"><i class="fas fa-qrcode"></i> 公众号</a>
+                            <a href="#"><i class="fas fa-mobile-alt"></i> 微信小程序</a>
+                            <a href="#"><i class="fas fa-headset"></i> 在线客服</a>
                         </div>
                     </div>
                     
@@ -138,9 +138,9 @@
                             <button class="search-btn">搜索</button>
                         </div>
                         <div class="additional-links">
-                            <a href="#" class="qr-tooltip"><i class="fas fa-qrcode"></i> 公众号<div class="qr-image"><img src="assets/images/qr.jpg" alt="公众号二维码"></div></a>
-                            <a href="#" class="qr-tooltip"><i class="fas fa-mobile-alt"></i> 微信小程序<div class="qr-image"><img src="assets/images/chengxu.png" alt="微信小程序二维码"></div></a>
-                            <a href="#" class="customer-service"><i class="fas fa-headset"></i> 在线客服</a>
+                            <a href="#"><i class="fas fa-qrcode"></i> 公众号</a>
+                            <a href="#"><i class="fas fa-mobile-alt"></i> 微信小程序</a>
+                            <a href="#"><i class="fas fa-headset"></i> 在线客服</a>
                         </div>
                     </div>
                     
@@ -165,9 +165,9 @@
                         </div>
                         <!-- 添加底部链接区域 -->
                         <div class="additional-links">
-                            <a href="#" class="qr-tooltip"><i class="fas fa-qrcode"></i> 公众号<div class="qr-image"><img src="assets/images/qr.jpg" alt="公众号二维码"></div></a>
-                            <a href="#" class="qr-tooltip"><i class="fas fa-mobile-alt"></i> 微信小程序<div class="qr-image"><img src="assets/images/chengxu.png" alt="微信小程序二维码"></div></a>
-                            <a href="#" class="customer-service"><i class="fas fa-headset"></i> 在线客服</a>
+                            <a href="#"><i class="fas fa-qrcode"></i> 公众号</a>
+                            <a href="#"><i class="fas fa-mobile-alt"></i> 微信小程序</a>
+                            <a href="#"><i class="fas fa-headset"></i> 在线客服</a>
                         </div>
                     </div>
                 </div>
@@ -310,12 +310,6 @@
                         <div class="partner-logo">
                             <img src="assets/images/logo.png" alt="合作伙伴">
                         </div>
-                        <div class="partner-logo">
-                            <img src="assets/images/logo.png" alt="合作伙伴">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="assets/images/logo.png" alt="合作伙伴">
-                        </div>
                     </div>
                 </div>
                 
@@ -391,7 +385,7 @@
                 <div class="contact-content">
                     <h2>联系我们</h2>
                     <p class="contact-desc">如果您在物流方面有任何想要咨询的事宜，欢迎随时与我们联系。</p>
-                    <div class="contact-info about-section-contact">
+                    <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-phone-alt"></i>
                             <p>021-65143931转826</p>
@@ -414,41 +408,46 @@
                     <img src="assets/images/logo.png" alt="WallTech B2B Logo">
                     <p>选择 WallTech B2B 是您业务合作的明智之选。我们致力于为您提供最优质的B2B服务体验。</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" class="xiaohongshu"><span>小红书</span></a>
-                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <div class="link-column">
                         <h3>地址</h3>
                         <ul>
-                            <li>上海市虹口区<br>周家嘴路699号中垠广场A座9F<br><br>工作时间：<br>周一至周五  9:00-18:00</li>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
                         </ul>
                     </div>
                     <div class="link-column">
-                        <h3>关于我们</h3>
+                        <h3>关于</h3>
                         <ul>
-                            <li><a href="#">公司简介</a></li>
-                            <li><a href="#">发展历程</a></li>
-                            <li><a href="#">企业文化</a></li>
-                            <li><a href="#">招贤纳士</a></li>
+                            <li><a href="#">我们的博客</a></li>
+                            <li><a href="#">位置</a></li>
+                            <li><a href="#">支持</a></li>
+                            <li><a href="#">条款</a></li>
+                            <li><a href="#">隐私</a></li>
                         </ul>
                     </div>
                     <div class="link-column">
-                        <h3>隐私政策</h3>
+                        <h3>支持</h3>
                         <ul>
-                            <li><a href="#">用户协议</a></li>
-                            <li><a href="#">隐私条款</a></li>
-                            <li><a href="#">Cookie政策</a></li>
-                            <li><a href="#">信息安全</a></li>
+                            <li><a href="#">帮助中心</a></li>
+                            <li><a href="#">推特支持</a></li>
+                            <li><a href="#">脸书支持</a></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li><a href="#">实时支持</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 All Rights Reserved 版权所有:上海沃行信息技术有限公司 沪ICP备07034486号</p>
+                <p>Copyright © WallTech B2B 2023 All right reserved</p>
             </div>
         </div>
     </footer>
@@ -462,62 +461,51 @@
             
             primaryTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    
                     // 移除所有active类
                     primaryTabs.forEach(t => t.classList.remove('active'));
                     tabContents.forEach(c => c.classList.remove('active-tab'));
                     
-                    // 添加active类
+                    // 添加active类到当前tab
                     this.classList.add('active');
-                    document.getElementById(`${tabId}-content`).classList.add('active-tab');
+                    
+                    // 显示对应内容
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId + '-content').classList.add('active-tab');
                 });
             });
             
-            // 二级Tab切换
+            // 二级Tab切换（仅用于运价查询）
             const secondaryTabs = document.querySelectorAll('.secondary-tabs .tab-btn');
             
             secondaryTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    const parentId = this.closest('.tab-content').id;
+                    // 获取当前二级Tab所在的容器
+                    const container = this.closest('.secondary-tabs');
+                    // 只移除当前容器内的active类
+                    container.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+                    
+                    // 添加active类到当前tab
+                    this.classList.add('active');
+                });
+            });
+            
+            // 船期查询二级Tab切换
+            const scheduleTabs = document.querySelectorAll('#schedule-content .secondary-tabs .tab-btn');
+            
+            scheduleTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 获取当前点击的二级Tab数据
                     const subTab = this.getAttribute('data-subtab');
                     
-                    // 移除同组中所有active类
-                    const siblings = this.closest('.secondary-tabs').querySelectorAll('.tab-btn');
-                    siblings.forEach(s => s.classList.remove('active'));
+                    // 隐藏所有搜索字段
+                    document.querySelector('.port-search').style.display = 'none';
+                    document.querySelector('.vessel-search').style.display = 'none';
                     
-                    // 添加active类
-                    this.classList.add('active');
-                    
-                    // 船期查询的特殊处理 - 切换搜索栏
-                    if(parentId === 'schedule-content') {
-                        document.querySelectorAll('.search-fields').forEach(field => {
-                            field.style.display = 'none';
-                        });
-                    }
-                    
+                    // 显示对应的搜索字段
                     if (subTab === 'port') {
                         document.querySelector('.port-search').style.display = 'flex';
                     } else if (subTab === 'vessel') {
                         document.querySelector('.vessel-search').style.display = 'flex';
-                    }
-                });
-            });
-            
-            // 在线客服链接点击事件
-            const customerServiceLinks = document.querySelectorAll('.customer-service');
-            customerServiceLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // 使用相同的逻辑打开Coze聊天窗口
-                    if (window.cozeWebChatClient) {
-                        if (window.cozeWebChatClient.open && typeof window.cozeWebChatClient.open === 'function') {
-                            window.cozeWebChatClient.open();
-                        } else if (window.cozeWebChatClient.component && window.cozeWebChatClient.component.setOpen) {
-                            window.cozeWebChatClient.component.setOpen(true);
-                        } else {
-                            console.error('无法找到打开聊天窗口的方法，请检查Coze SDK版本');
-                        }
                     }
                 });
             });

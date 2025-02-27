@@ -88,11 +88,11 @@ img {
     color: #fff;
 }
 
-/* 顶部信息栏样式 - 恢复原样 */
+/* 顶部信息栏样式 */
 .header-top {
     background-color: #0a1232;
     color: #fff;
-    padding: 8px 0;
+    padding: 10px 0; /* 增加一点垂直空间 */
     font-size: 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -122,18 +122,41 @@ img {
     margin: 0;
 }
 
+/* 联系信息图标 - 进一步优化居中效果 */
 .contact-info i {
-    color: #1e5aa0;
-    font-size: 16px;
-    width: 25px;
-    height: 25px;
-    background-color: #fff;
+    margin-right: 10px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
+    background-color: #ffffff; /* 改为纯白色 */
+    display: inline-flex; 
     justify-content: center;
-    margin-right: 2px;
-    margin-top: 0;
+    align-items: center;
+    font-size: 14px;
+    line-height: 0;
+    vertical-align: middle;
+    /* 使用transform确保绝对居中 */
+    text-align: center;
+    position: relative;
+    color: #1e5aa0; /* 设置图标颜色为蓝色，与主题一致 */
+}
+
+/* 用CSS伪元素确保图标内容绝对居中 */
+.contact-info i::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+/* 特定图标的微调 */
+.contact-info .fa-phone-alt::before {
+    transform: translate(-50%, -50%) translateY(-0.5px); /* 电话图标向上微调 */
+}
+
+.contact-info .fa-envelope::before {
+    transform: translate(-50%, -50%);
 }
 
 .language-selector {
@@ -433,18 +456,22 @@ img {
 
 /* 搜索按钮颜色修改为蓝色 */
 .search-btn {
-    background-color: #1e5aa0; /* 中远海运蓝色，替换红色 */
+    background-color: #1e5aa0;
     color: #fff;
-    width: auto; /* 自适应宽度 */
-    min-width: 100px; /* 最小宽度 */
-    padding: 0 25px; /* 水平内边距 */
+    width: auto;
+    min-width: 100px;
+    padding: 0 25px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(30, 90, 160, 0.3);
     transition: all 0.3s ease;
-    height: 45px !important; /* 减小高度 */
-    margin-top: 0; /* 重置间距 */
+    height: 45px !important;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .search-btn:hover {
@@ -703,12 +730,15 @@ img {
 
 .field input {
     width: 100%;
-    height: 45px !important; /* 减小高度 */
+    height: 45px !important; /* 保持高度不变 */
     padding: 0 18px 0 50px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    line-height: 45px; /* 添加行高与高度相等 */
 }
 
 /* 专门调整货物追踪字段的样式 */
@@ -2115,4 +2145,45 @@ html, body {
         justify-content: center;
         flex-direction: column;
     }
+}
+
+/* 添加公众号和微信小程序图片悬浮效果 */
+.qr-tooltip {
+    position: relative;
+}
+
+.qr-tooltip .qr-image {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px; /* 容器宽度 */
+    height: 180px; /* 容器高度 */
+    padding: 10px; /* 内边距 */
+    box-sizing: border-box; /* 加上border-box确保padding计入总宽高 */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+    filter: drop-shadow(0 0 8px rgba(30, 90, 160, 0.5));
+    margin-bottom: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 添加图片样式 */
+.qr-tooltip .qr-image img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+}
+
+.qr-tooltip:hover .qr-image {
+    opacity: 1;
+    visibility: visible;
 } 

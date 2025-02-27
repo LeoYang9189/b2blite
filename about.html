@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - WallTech B2B平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 引入字体图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 内联样式，确保页面显示正确 -->
+    <style>
+        /* 关于我们页面样式 */
+        .about-banner {
+            background: linear-gradient(135deg, #1e5aa0, #072a60);
+            background-size: cover;
+            position: relative;
+            padding: 100px 0 80px;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .about-banner h1 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .about-banner p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* 关于内容导航 */
+        .about-nav-section {
+            background: #fff;
+            padding: 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .about-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .about-nav-item {
+            flex: 1;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 25px 15px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .about-nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #1e5aa0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-nav-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 90, 160, 0.15);
+        }
+        
+        .about-nav-item:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .about-nav-item.active {
+            background: linear-gradient(135deg, #1e5aa0, #0f3b72);
+            color: white;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 90, 160, 0.25);
+        }
+        
+        .about-nav-item.active::after {
+            transform: scaleX(1);
+            background: #ff9800;
+        }
+        
+        .about-nav-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        
+        .about-nav-icon i {
+            font-size: 36px;
+            color: #1e5aa0;
+            transition: all 0.3s ease;
+        }
+        
+        .about-nav-item.active .about-nav-icon i {
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .about-nav-text {
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        /* 关于内容样式 */
+        .about-content-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+        }
+        
+        .about-content {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease-out forwards;
+            padding: 0 20px;
+        }
+        
+        .about-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .about-header h2 {
+            font-size: 36px;
+            color: #1e5aa0;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 80px;
+            height: 3px;
+            background: #1e5aa0;
+            transform: translateX(-50%);
+        }
+        
+        .about-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 20px auto 0;
+            line-height: 1.8;
+        }
+        
+        /* 公司简介样式 */
+        .company-intro {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .company-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .company-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .company-text {
+            flex: 1;
+        }
+        
+        .company-text h3 {
+            font-size: 24px;
+            color: #1e5aa0;
+            margin-bottom: 20px;
+        }
+        
+        .company-text p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        /* 发展历程样式 */
+        .timeline-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #1e5aa0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item-content {
+            width: 45%;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-item-content {
+            margin-left: auto;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-item-content::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-item-content::before {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid white;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            background: #1e5aa0;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 5px solid #f8f9ff;
+            z-index: 2;
+        }
+        
+        .timeline-year {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e5aa0;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-item-content h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* 企业文化样式 */
+        .culture-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .culture-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .culture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 90, 160, 0.12);
+        }
+        
+        .culture-icon {
+            width: 80px;
+            height: 80px;
+            background: #f0f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .culture-icon i {
+            font-size: 32px;
+            color: #1e5aa0;
+        }
+        
+        .culture-card h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .culture-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* 联系我们样式 */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        
+        .contact-icon i {
+            font-size: 24px;
+            color: #1e5aa0;
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .contact-text p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #1e5aa0;
+            box-shadow: 0 0 0 3px rgba(30,90,160,0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background: #1e5aa0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            background: #0d417c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(30,90,160,0.2);
+        }
+        
+        @media (max-width: 992px) {
+            .about-navigation {
+                flex-wrap: wrap;
+            }
+            
+            .about-nav-item {
+                flex: 0 0 calc(50% - 10px);
+            }
+            
+            .company-intro {
+                flex-direction: column;
+            }
+            
+            .timeline-container::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-item-content {
+                width: 90%;
+                margin-left: 40px !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-item-content::before,
+            .timeline-item:nth-child(even) .timeline-item-content::before {
+                left: -15px;
+                right: auto;
+                border: none;
+                border-top: 15px solid transparent;
+                border-bottom: 15px solid transparent;
+                border-right: 15px solid white;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .culture-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 统一的导航栏 -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <a href="tel:021-65143931" class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>客服电话: 021-65143931转826</span>
+                        </a>
+                        <a href="mailto:b2b-service@walltechsystem.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>邮箱: b2b-service@walltechsystem.com</span>
+                        </a>
+                    </div>
+                    <div class="language-selector">
+                        <div class="current-lang">
+                            <i class="fas fa-globe"></i>
+                            <span class="current-lang-text">中文</span>
+                            <i class="fas fa-chevron-down" style="font-size: 10px; background: none; width: auto; height: auto;"></i>
+                        </div>
+                        <div class="lang-options">
+                            <a href="#" class="lang-option active" data-lang="zh">中文</a>
+                            <a href="#" class="lang-option" data-lang="en">English</a>
+                            <a href="#" class="lang-option" data-lang="jp">日本語</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="B2B平台 Logo">
+                        </a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="tracking.html">货物追踪</a></li>
+                            <li><a href="service.html">业务介绍</a></li>
+                            <li><a href="news.html">资讯中心</a></li>
+                            <li class="active"><a href="about.html">关于我们</a></li>
+                        </ul>
+                    </nav>
+                    <div class="action-btn">
+                        <a href="#" class="btn btn-primary">注册/登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 关于我们横幅 -->
+    <section class="about-banner">
+        <div class="container">
+            <h1>关于我们</h1>
+            <p>作为值得信赖的国际物流合作伙伴，我们致力于为全球客户提供高效、可靠的供应链解决方案</p>
+        </div>
+    </section>
+
+    <!-- 修改导航和内容展示方式 -->
+    <!-- 将原来的标签导航改为页内锚点导航 -->
+    <section class="about-nav-section">
+        <div class="container">
+            <div class="about-navigation">
+                <a href="#company-section" class="about-nav-item">
+                    <div class="about-nav-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="about-nav-text">公司简介</div>
+                </a>
+                <a href="#history-section" class="about-nav-item">
+                    <div class="about-nav-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="about-nav-text">发展历程</div>
+                </a>
+                <a href="#culture-section" class="about-nav-item">
+                    <div class="about-nav-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="about-nav-text">企业文化</div>
+                </a>
+                <a href="#contact-section" class="about-nav-item">
+                    <div class="about-nav-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="about-nav-text">联系我们</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司简介部分 -->
+    <section id="company-section" class="about-content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>公司简介</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="company-intro">
+                <!-- 公司简介内容 -->
+                <div class="intro-text">
+                    <p>上海沃行信息技术有限公司是一家专注于国际物流和供应链管理的技术创新企业，总部位于中国上海。公司成立于2010年，凭借其专业的服务和先进的数字化物流解决方案，已成为亚太地区领先的B2B物流平台提供商。</p>
+                    <p>作为全球贸易的重要参与者，我们致力于简化国际物流流程，通过技术创新降低贸易壁垒，为客户提供高效、透明、可靠的物流服务体验。我们的业务范围覆盖亚洲、欧洲、美洲等主要市场，服务全球数千家企业客户。</p>
+                    <p>公司拥有一支由物流专家、技术工程师及国际贸易顾问组成的精英团队，平均行业经验超过10年。我们不断创新，利用最新的技术如区块链、人工智能和大数据分析，不断优化物流流程，提升服务品质。</p>
+                </div>
+                
+                <div class="intro-image">
+                    <img src="assets/images/office.jpg" alt="办公环境">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 发展历程部分 -->
+    <section id="history-section" class="about-content-section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>发展历程</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="timeline-container">
+                <!-- 时间轴内容 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-item-content">
+                        <div class="timeline-year">2010年</div>
+                        <h3>公司成立</h3>
+                        <p>上海沃行信息技术有限公司在上海成立，初始专注于为中小企业提供国际货运代理服务。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-item-content">
+                        <div class="timeline-year">2015年</div>
+                        <h3>数字化转型</h3>
+                        <p>推出首个在线物流管理系统，开始数字化转型，为客户提供线上订舱、追踪和文档管理服务。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-item-content">
+                        <div class="timeline-year">2018年</div>
+                        <h3>业务扩展</h3>
+                        <p>拓展业务范围，新增通关服务和仓储配送解决方案，成为综合性物流服务提供商。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-item-content">
+                        <div class="timeline-year">2020年</div>
+                        <h3>B2B平台上线</h3>
+                        <p>正式推出WallTech B2B物流平台，整合全球资源，为企业提供一站式国际物流解决方案。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-item-content">
+                        <div class="timeline-year">2023年</div>
+                        <h3>全球化战略</h3>
+                        <p>完成新一轮融资，加速全球化布局，在欧洲和东南亚设立区域服务中心。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 企业文化部分 -->
+    <section id="culture-section" class="about-content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>企业文化</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="culture-cards">
+                <!-- 企业文化卡片 -->
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>使命</h3>
+                    <p>通过技术创新和服务优化，连接全球贸易，让物流变得简单和高效。</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>愿景</h3>
+                    <p>成为全球领先的数字化物流平台，为全球贸易提供最可靠的支持。</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>价值观</h3>
+                    <p>诚信、创新、专业、合作、以客户为中心。</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>团队精神</h3>
+                    <p>尊重多元化，鼓励创新，共同成长，追求卓越。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 重新布局联系我们部分 -->
+    <section id="contact-section" class="about-content-section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>联系我们</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="row" style="display: flex; flex-wrap: wrap; margin: 0 -15px;">
+                <!-- 左侧公司和地址信息 -->
+                <div class="contact-column" style="flex: 1; padding: 0 15px; min-width: 250px;">
+                    <h3>公司</h3>
+                    <h3>地址</h3>
+                    <p>上海市浦东新区陆家嘴环路1000号恒生银行大厦25楼</p>
+                </div>
+                
+                <!-- 中间联系方式 -->
+                <div class="contact-column" style="flex: 1; padding: 0 15px; min-width: 250px;">
+                    <h3>联系电话</h3>
+                    <p>021-65143931转826</p>
+                    
+                    <h3>电子邮箱</h3>
+                    <p>b2b-service@walltechsystem.com</p>
+                </div>
+                
+                <!-- 右侧工作时间 -->
+                <div class="contact-column" style="flex: 1; padding: 0 15px; min-width: 250px;">
+                    <h3>工作时间</h3>
+                    <p>周一至周五<br>9:00-18:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="WallTech B2B Logo">
+                    <p>选择 WallTech B2B 是您业务合作的明智之选。我们致力于为您提供最优质的B2B服务体验。</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="xiaohongshu"><span>小红书</span></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>地址</h3>
+                        <ul>
+                            <li>上海市虹口区<br>周家嘴路699号中垠广场A座9F<br><br>工作时间：<br>周一至周五  9:00-18:00</li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>关于我们</h3>
+                        <ul>
+                            <li><a href="#">公司简介</a></li>
+                            <li><a href="#">发展历程</a></li>
+                            <li><a href="#">企业文化</a></li>
+                            <li><a href="#">联系我们</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>隐私政策</h3>
+                        <ul>
+                            <li><a href="#">用户协议</a></li>
+                            <li><a href="#">隐私条款</a></li>
+                            <li><a href="#">Cookie政策</a></li>
+                            <li><a href="#">信息安全</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 All Rights Reserved 版权所有:上海沃行信息技术有限公司 沪ICP备07034486号</p>
+            </div>
+        </div>
+    </footer>
+   
+
+    <!-- 悬浮客服图标 -->
+    <div class="floating-service">
+        <div class="service-icon" id="serviceIcon">
+            <img src="assets/images/chat.png" alt="在线客服">
+        </div>
+    </div>
+
+    <!-- JavaScript 代码 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 平滑滚动功能
+            const navLinks = document.querySelectorAll('.about-nav-item');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if(targetSection) {
+                        // 平滑滚动
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // 处理URL锚点
+            const hash = window.location.hash;
+            if(hash) {
+                setTimeout(() => {
+                    const targetElement = document.querySelector(hash.replace('-content', '-section'));
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 300);
+            }
+            
+            // 滚动时高亮导航项
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.about-content-section');
+                const navItems = document.querySelectorAll('.about-nav-item');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if(window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if(item.getAttribute('href') === currentSection) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            // 语言切换功能
+            const langOptions = document.querySelectorAll('.lang-option');
+            const currentLangText = document.querySelector('.current-lang-text');
+            
+            langOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    langOptions.forEach(lang => lang.classList.remove('active'));
+                    
+                    // 添加active类到当前选项
+                    this.classList.add('active');
+                    
+                    // 更新当前语言显示
+                    const langText = this.textContent.trim();
+                    currentLangText.textContent = langText;
+                    
+                    // 存储用户语言偏好
+                    localStorage.setItem('preferredLanguage', this.getAttribute('data-lang'));
+                });
+            });
+            
+            // 导航栏固定效果
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                
+                if(window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+
+    <!-- 引入Coze Chat SDK脚本 -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
+    
+    <!-- Coze Chat客服 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceIcon = document.getElementById('serviceIcon');
+            
+            // 初始化Coze Chat客户端
+            window.cozeWebChatClient = new CozeWebSDK.WebChatClient({
+                config: {
+                    bot_id: '7476024207646769178'
+                },
+                componentProps: {
+                    title: 'AI智能客服',
+                    chatIcon: 'assets/images/chat.png',
+                    chatBtnStyle: {
+                        display: 'none' // 隐藏默认的聊天按钮，使用我们自定义的按钮
+                    },
+                    defaultOpen: false, // 默认不打开
+                    containerStyle: {
+                        zIndex: 10000 // 确保层级高于页面其他元素
+                    }
+                },
+                auth: {
+                    type: 'token',
+                    token: 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ',
+                    onRefreshToken: function() {
+                        return 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ';
+                    }
+                }
+            });
+            
+            // 点击图标时显示Coze聊天窗口
+            serviceIcon.addEventListener('click', function() {
+                if (window.cozeWebChatClient) {
+                    // 使用正确的方法打开聊天窗口
+                    if (window.cozeWebChatClient.open && typeof window.cozeWebChatClient.open === 'function') {
+                        window.cozeWebChatClient.open();
+                    } else if (window.cozeWebChatClient.component && window.cozeWebChatClient.component.setOpen) {
+                        window.cozeWebChatClient.component.setOpen(true);
+                    } else {
+                        console.error('无法找到打开聊天窗口的方法，请检查Coze SDK版本');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

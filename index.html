@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WallTech B2B平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 引入字体图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <a href="tel:021-65143931" class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>客服电话: 021-65143931转826</span>
+                        </a>
+                        <a href="mailto:b2b-service@walltechsystem.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>邮箱: b2b-service@walltechsystem.com</span>
+                        </a>
+                    </div>
+                    <div class="language-selector">
+                        <div class="current-lang">
+                            <i class="fas fa-globe"></i>
+                            <span class="current-lang-text">中文</span>
+                            <i class="fas fa-chevron-down" style="font-size: 10px; background: none; width: auto; height: auto;"></i>
+                        </div>
+                        <div class="lang-options">
+                            <a href="#" class="lang-option active" data-lang="zh">中文</a>
+                            <a href="#" class="lang-option" data-lang="en">English</a>
+                            <a href="#" class="lang-option" data-lang="jp">日本語</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="B2B平台 Logo">
+                        </a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="#" class="active">首页</a></li>
+                            <li><a href="#">货物追踪</a></li>
+                            <li><a href="#">业务介绍</a></li>
+                            <li><a href="#">资讯中心</a></li>
+                            <li><a href="#">关于我们</a></li>
+                        </ul>
+                    </nav>
+                    <div class="action-btn">
+                        <a href="#" class="btn btn-primary">注册/登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('assets/images/bg1.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/bg2.jpg');"></div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>这里是您公司的主Slogan</h1>
+                <p>这里是您的副Slogan,示例文字可以多一点</p>
+                
+                <!-- 搜索表单 -->
+                <div class="search-form">
+                    <!-- 一级Tab -->
+                    <div class="search-tabs primary-tabs">
+                        <button class="tab-btn active" data-tab="freight">货物追踪</button>
+                        <button class="tab-btn" data-tab="schedule">船期查询</button>
+                        <button class="tab-btn" data-tab="tracking">运价查询</button>
+                    </div>
+                    
+                    <!-- 货物追踪内容 -->
+                    <div class="tab-content active-tab" id="freight-content">
+                        <!-- 添加空的二级Tab来占位，确保高度一致 -->
+                        <div class="secondary-tabs">
+                            <button class="tab-btn active" data-subtab="order">订单查询</button>
+                            <button class="tab-btn" data-subtab="container">集装箱查询</button>
+                        </div>
+                        <div class="search-fields">
+                            <div class="field">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="请输入订单号">
+                            </div>
+                            <button class="search-btn">搜索</button>
+                        </div>
+                        <div class="additional-links">
+                            <a href="#"><i class="fas fa-qrcode"></i> 公众号</a>
+                            <a href="#"><i class="fas fa-mobile-alt"></i> 微信小程序</a>
+                            <a href="#"><i class="fas fa-headset"></i> 在线客服</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 船期查询内容 -->
+                    <div class="tab-content" id="schedule-content">
+                        <div class="secondary-tabs">
+                            <button class="tab-btn active" data-subtab="port">按港口</button>
+                            <button class="tab-btn" data-subtab="vessel">按船名</button>
+                        </div>
+                        <div class="search-fields port-search">
+                            <div class="field">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" placeholder="起运港">
+                            </div>
+                            <div class="field">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" placeholder="目的港">
+                            </div>
+                            <button class="search-btn">搜索</button>
+                        </div>
+                        <div class="search-fields vessel-search" style="display: none;">
+                            <div class="field">
+                                <i class="fas fa-ship"></i>
+                                <input type="text" placeholder="输入船名">
+                            </div>
+                            <div class="field">
+                                <i class="fas fa-calendar-alt"></i>
+                                <input type="text" placeholder="选择日期范围">
+                            </div>
+                            <button class="search-btn">搜索</button>
+                        </div>
+                        <div class="additional-links">
+                            <a href="#"><i class="fas fa-qrcode"></i> 公众号</a>
+                            <a href="#"><i class="fas fa-mobile-alt"></i> 微信小程序</a>
+                            <a href="#"><i class="fas fa-headset"></i> 在线客服</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 运价查询内容 -->
+                    <div class="tab-content" id="tracking-content">
+                        <div class="secondary-tabs">
+                            <button class="tab-btn active" data-subtab="fcl">整箱</button>
+                            <button class="tab-btn" data-subtab="lcl">拼箱</button>
+                            <button class="tab-btn" data-subtab="air">空运</button>
+                            <button class="tab-btn" data-subtab="rail">铁路</button>
+                        </div>
+                        <div class="search-fields">
+                            <div class="field">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" placeholder="起运港">
+                            </div>
+                            <div class="field">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" placeholder="目的港">
+                            </div>
+                            <button class="search-btn">搜索</button>
+                        </div>
+                        <!-- 添加底部链接区域 -->
+                        <div class="additional-links">
+                            <a href="#"><i class="fas fa-qrcode"></i> 公众号</a>
+                            <a href="#"><i class="fas fa-mobile-alt"></i> 微信小程序</a>
+                            <a href="#"><i class="fas fa-headset"></i> 在线客服</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色服务 -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">我们的服务</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <img src="assets/images/shipping-icon.svg" class="floating-icon" alt="Shipping Icon">
+                    <h3>订舱服务</h3>
+                    <p>针对整箱（FCL）及拼箱（LCL）国际运输，我们将根据实际情况，为您推荐所需的货船或航班，并安排最佳货运舱位。</p>
+                    <a href="#" class="feature-btn"><i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <img src="assets/images/customs-icon.svg" class="floating-icon" alt="Customs Icon">
+                    <h3>通関・検査</h3>
+                    <p>凭借广博深厚的专业学识，以及久经沉淀的丰富经验，全方位助力进出口货物合法依规、高效快捷地通过行政许可流程，确保每一次货物流转都畅行无阻。</p>
+                    <a href="#" class="feature-btn"><i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <img src="assets/images/warehouse-icon.svg" class="floating-icon" alt="Warehouse Icon">
+                    <h3>仓库·配送</h3>
+                    <p>我们珍视客户所托，定将其重要货物如期送达，不负所望。同时，对于客户的细致需求与特殊条件，将竭尽所能，全力提升服务品质，不负每一份信任。</p>
+                    <a href="#" class="feature-btn"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 为什么选择我们 -->
+    <section class="why-us">
+        <div class="container">
+            <div class="why-us-content">
+                <div class="why-us-image">
+                    <img src="assets/images/why-us.svg" alt="Why Choose Us">
+                </div>
+                <div class="why-us-text">
+                    <h4>Let's Fly</h4>
+                    <h2>It's one of the leading online flight booking platforms in the world</h2>
+                    <ul class="why-us-list">
+                        <li>比较所有主要航空公司以找到最优惠的价格</li>
+                        <li>如果您在其他地方找到更便宜的价格，我们将退还差价</li>
+                        <li>Lorem Ipsum 是世界领先的在线旅游预订平台之一</li>
+                        <li>为全球旅行者提供值得信赖的服务</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门航班 -->
+    <section class="popular-flights">
+        <div class="container">
+            <div class="popular-flights-content">
+                <div class="flights-info">
+                    <h2>Book Popular Flight Tickets</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+                    <div class="globe-image">
+                        <img src="assets/images/globe.svg" alt="Globe">
+                    </div>
+                </div>
+                <div class="ticket-example">
+                    <img src="assets/images/ticket.svg" alt="Flight Ticket Example">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 本月最佳旅行者 -->
+    <section class="best-travelers">
+        <div class="container">
+            <h2 class="section-title">Best Travelers Of This Month</h2>
+            <div class="travelers-grid">
+                <div class="traveler-card">
+                    <div class="traveler-image">
+                        <img src="assets/images/traveler1.svg" alt="Rajiv Kanish">
+                    </div>
+                    <h3>Rajiv Kanish</h3>
+                    <p>@rajivkanish</p>
+                </div>
+                <div class="traveler-card">
+                    <div class="traveler-image">
+                        <img src="assets/images/traveler2.svg" alt="Zaira Vetcom">
+                    </div>
+                    <h3>Zaira Vetcom</h3>
+                    <p>@zairavetcom</p>
+                </div>
+                <div class="traveler-card">
+                    <div class="traveler-image">
+                        <img src="assets/images/traveler3.svg" alt="Marcus Dias">
+                    </div>
+                    <h3>Marcus Dias</h3>
+                    <p>@marcusdias</p>
+                </div>
+                <div class="traveler-card">
+                    <div class="traveler-image">
+                        <img src="assets/images/traveler4.svg" alt="David Schaffer">
+                    </div>
+                    <h3>David Schaffer</h3>
+                    <p>@davidschaffer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户反馈 -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Our Customer Feedback</h2>
+            <div class="testimonial-slider">
+                <!-- 这里将通过JavaScript动态生成客户反馈 -->
+                <div class="testimonial-card active">
+                    <div class="user-avatar">
+                        <img src="assets/images/user1.svg" alt="Navin Vayaran">
+                    </div>
+                    <div class="user-info">
+                        <h3>Navin Vayaran</h3>
+                        <p>Thanks for timely compliance of consignee of Lorem Ipsum airlines avaibility. But the majority have suffered alteration in some form, by injected humour, or randomised words which don't.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-btn"><i class="fas fa-arrow-left"></i></button>
+                <button class="next-btn"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 旅行记忆 -->
+    <section class="memories">
+        <div class="container">
+            <h2 class="section-title">Make Memories With Us</h2>
+            <div class="memories-grid">
+                <div class="memory-card">
+                    <img src="assets/images/destination1.svg" alt="Destination 1">
+                </div>
+                <div class="memory-card">
+                    <img src="assets/images/destination2.svg" alt="Destination 2">
+                </div>
+                <div class="memory-card">
+                    <img src="assets/images/destination3.svg" alt="Destination 3">
+                </div>
+                <div class="memory-card">
+                    <img src="assets/images/destination4.svg" alt="Destination 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅通讯 -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Subscribe Newsletter & Get Latest News</h2>
+            <div class="newsletter-form">
+                <input type="email" placeholder="输入您的邮箱">
+                <button class="btn btn-primary">订阅</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="WallTech B2B Logo">
+                    <p>选择 WallTech B2B 是您业务合作的明智之选。我们致力于为您提供最优质的B2B服务体验。</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>地址</h3>
+                        <ul>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
+                            <li>Lorem Ipsum</li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>关于</h3>
+                        <ul>
+                            <li><a href="#">我们的博客</a></li>
+                            <li><a href="#">位置</a></li>
+                            <li><a href="#">支持</a></li>
+                            <li><a href="#">条款</a></li>
+                            <li><a href="#">隐私</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>支持</h3>
+                        <ul>
+                            <li><a href="#">帮助中心</a></li>
+                            <li><a href="#">推特支持</a></li>
+                            <li><a href="#">脸书支持</a></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li><a href="#">实时支持</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © WallTech B2B 2023 All right reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 一级Tab切换
+            const primaryTabs = document.querySelectorAll('.primary-tabs .tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            primaryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有active类
+                    primaryTabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active-tab'));
+                    
+                    // 添加active类到当前tab
+                    this.classList.add('active');
+                    
+                    // 显示对应内容
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId + '-content').classList.add('active-tab');
+                });
+            });
+            
+            // 二级Tab切换（仅用于运价查询）
+            const secondaryTabs = document.querySelectorAll('.secondary-tabs .tab-btn');
+            
+            secondaryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 获取当前二级Tab所在的容器
+                    const container = this.closest('.secondary-tabs');
+                    // 只移除当前容器内的active类
+                    container.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+                    
+                    // 添加active类到当前tab
+                    this.classList.add('active');
+                });
+            });
+            
+            // 船期查询二级Tab切换
+            const scheduleTabs = document.querySelectorAll('#schedule-content .secondary-tabs .tab-btn');
+            
+            scheduleTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 获取当前点击的二级Tab数据
+                    const subTab = this.getAttribute('data-subtab');
+                    
+                    // 隐藏所有搜索字段
+                    document.querySelector('.port-search').style.display = 'none';
+                    document.querySelector('.vessel-search').style.display = 'none';
+                    
+                    // 显示对应的搜索字段
+                    if (subTab === 'port') {
+                        document.querySelector('.port-search').style.display = 'flex';
+                    } else if (subTab === 'vessel') {
+                        document.querySelector('.vessel-search').style.display = 'flex';
+                    }
+                });
+            });
+            
+            // 轮播图切换
+            const dots = document.querySelectorAll('.dot');
+            const slides = document.querySelectorAll('.slide');
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = this.getAttribute('data-slide');
+                    
+                    // 移除所有active类
+                    dots.forEach(d => d.classList.remove('active'));
+                    slides.forEach(s => s.classList.remove('active'));
+                    
+                    // 添加active类
+                    this.classList.add('active');
+                    slides[slideIndex].classList.add('active');
+                });
+            });
+            
+            // 自动切换轮播图
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            function autoSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                
+                // 移除所有active类
+                dots.forEach(d => d.classList.remove('active'));
+                slides.forEach(s => s.classList.remove('active'));
+                
+                // 添加active类
+                dots[currentSlide].classList.add('active');
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // 每5秒切换一次
+            setInterval(autoSlide, 5000);
+            
+            // 滚动效果
+            const features = document.querySelectorAll('.feature-card');
+            const travelers = document.querySelectorAll('.traveler-card');
+            const memories = document.querySelectorAll('.memory-card');
+            
+            function checkScroll() {
+                const triggerBottom = window.innerHeight * 0.8;
+                
+                [features, travelers, memories].forEach(items => {
+                    items.forEach(item => {
+                        const itemTop = item.getBoundingClientRect().top;
+                        
+                        if(itemTop < triggerBottom) {
+                            item.classList.add('animated');
+                        }
+                    });
+                });
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // 初始检查
+            
+            // 导航栏固定效果
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                
+                if(window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // 语言切换功能
+            const langOptions = document.querySelectorAll('.lang-option');
+            const currentLangText = document.querySelector('.current-lang-text');
+            
+            langOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    langOptions.forEach(lang => lang.classList.remove('active'));
+                    
+                    // 添加active类到当前选项
+                    this.classList.add('active');
+                    
+                    // 更新当前语言显示
+                    const langText = this.textContent.trim();
+                    currentLangText.textContent = langText;
+                    
+                    // 存储用户语言偏好
+                    localStorage.setItem('preferredLanguage', this.getAttribute('data-lang'));
+                    
+                    // 临时输出语言切换信息
+                    console.log(`已切换至${langText}版本`);
+                });
+            });
+        });
+    </script>
+    
+    <!-- 悬浮客服图标 -->
+    <div class="floating-service">
+        <div class="service-icon" id="serviceIcon">
+            <img src="assets/images/chat.png" alt="在线客服">
+        </div>
+    </div>
+
+    <!-- 引入Coze Chat SDK脚本 -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceIcon = document.getElementById('serviceIcon');
+            
+            // 初始化Coze Chat客户端
+            window.cozeWebChatClient = new CozeWebSDK.WebChatClient({
+                config: {
+                    bot_id: '7476024207646769178'
+                },
+                componentProps: {
+                    title: 'AI智能客服',
+                    chatIcon: 'assets/images/chat.png',
+                    chatBtnStyle: {
+                        display: 'none' // 隐藏默认的聊天按钮，使用我们自定义的按钮
+                    },
+                    defaultOpen: false, // 默认不打开
+                    containerStyle: {
+                        zIndex: 10000 // 确保层级高于页面其他元素
+                    }
+                },
+                auth: {
+                    type: 'token',
+                    token: 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ',
+                    onRefreshToken: function() {
+                        return 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ';
+                    }
+                }
+            });
+            
+            // 点击图标时显示Coze聊天窗口
+            serviceIcon.addEventListener('click', function() {
+                if (window.cozeWebChatClient) {
+                    // 修复：使用正确的方法打开聊天窗口
+                    if (window.cozeWebChatClient.open && typeof window.cozeWebChatClient.open === 'function') {
+                        window.cozeWebChatClient.open();
+                    } else if (window.cozeWebChatClient.component && window.cozeWebChatClient.component.setOpen) {
+                        window.cozeWebChatClient.component.setOpen(true);
+                    } else {
+                        console.error('无法找到打开聊天窗口的方法，请检查Coze SDK版本');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

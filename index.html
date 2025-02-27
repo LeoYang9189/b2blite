@@ -7,6 +7,134 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- 引入字体图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 服务卡片布局优化 -->
+    <style>
+        /* 服务卡片容器优化 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 三列等宽布局 */
+            gap: 30px; /* 卡片之间的间距 */
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+        
+        /* 服务卡片样式优化 */
+        .feature-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%; /* 确保所有卡片高度一致 */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30,90,160,0.15);
+        }
+        
+        /* 图标动画效果 */
+        .feature-card .icon {
+            margin-bottom: 25px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .feature-card .icon img {
+            width: 60px;
+            height: auto;
+            display: block;
+            transition: all 0.4s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* 图标漂浮动画 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* 悬停时图标放大 */
+        .feature-card:hover .icon img {
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            flex-grow: 1; /* 让文本占据剩余空间 */
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* 移除浮动图标 */
+        .floating-icon {
+            display: none;
+        }
+        
+        /* 修改为蓝色文字按钮，无背景 */
+        .feature-btn {
+            display: inline-block;
+            text-align: right;
+            color: #1e5aa0;
+            background-color: transparent;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: auto;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            float: right;
+            font-size: 14px;
+            white-space: nowrap;
+            box-shadow: none;
+            border-radius: 0;
+        }
+        
+        .feature-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-btn:hover {
+            background-color: transparent;
+            color: #0d417c;
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        
+        .feature-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr); /* 平板上显示2列 */
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr; /* 手机上显示1列 */
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 导航栏 -->
@@ -49,10 +177,10 @@
                     </div>
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="#" class="active">首页</a></li>
-                            <li><a href="tracking.html">货物追踪</a></li>
-                            <li><a href="#">业务介绍</a></li>
-                            <li><a href="#">资讯中心</a></li>
+                            <li><a href="./index.html" class="active">首页</a></li>
+                            <li><a href="./tracking.html">货物追踪</a></li>
+                            <li><a href="./service.html">业务介绍</a></li>
+                            <li><a href="./news.html">资讯中心</a></li>
                             <li><a href="#">关于我们</a></li>
                         </ul>
                     </nav>
@@ -98,9 +226,9 @@
                         <div class="search-fields">
                             <div class="field">
                                 <i class="fas fa-search"></i>
-                                <input type="text" placeholder="请输入订单号">
+                                <input type="text" id="tracking-number-input" placeholder="请输入订单号">
                             </div>
-                            <a href="tracking.html" class="search-btn">搜索</a>
+                            <a href="#" id="tracking-search-btn" class="search-btn">搜索</a>
                         </div>
                         <div class="additional-links">
                             <a href="#" class="qr-tooltip"><i class="fas fa-qrcode"></i> 公众号<div class="qr-image"><img src="assets/images/qr.jpg" alt="公众号二维码"></div></a>
@@ -180,32 +308,34 @@
         <div class="container">
             <h2 class="section-title">我们的服务</h2>
             <div class="features-grid">
+                <!-- 订舱服务 -->
                 <div class="feature-card">
                     <div class="icon">
-                        <i class="fas fa-ship"></i>
+                        <img src="assets/images/shipping-icon.svg" alt="订舱服务">
                     </div>
-                    <img src="assets/images/shipping-icon.svg" class="floating-icon" alt="Shipping Icon">
                     <h3>订舱服务</h3>
                     <p>针对整箱（FCL）及拼箱（LCL）国际运输，我们将根据实际情况，为您推荐所需的货船或航班，并安排最佳货运舱位。</p>
-                    <a href="#" class="feature-btn"><i class="fas fa-arrow-right"></i></a>
+                    <a href="service.html?service=booking#booking-service" id="booking-service-btn" class="feature-btn">了解更多 <i class="fas fa-arrow-right"></i></a>
                 </div>
+                
+                <!-- 通关检查 -->
                 <div class="feature-card">
                     <div class="icon">
-                        <i class="fas fa-file-contract"></i>
+                        <img src="assets/images/customs-icon.svg" alt="通关检查">
                     </div>
-                    <img src="assets/images/customs-icon.svg" class="floating-icon" alt="Customs Icon">
-                    <h3>通関・検査</h3>
+                    <h3>通关・检查</h3>
                     <p>凭借广博深厚的专业学识，以及久经沉淀的丰富经验，全方位助力进出口货物合法依规、高效快捷地通过行政许可流程，确保每一次货物流转都畅行无阻。</p>
-                    <a href="#" class="feature-btn"><i class="fas fa-arrow-right"></i></a>
+                    <a href="service.html?service=customs#customs-service" id="customs-service-btn" class="feature-btn">了解更多 <i class="fas fa-arrow-right"></i></a>
                 </div>
+                
+                <!-- 仓库配送 -->
                 <div class="feature-card">
                     <div class="icon">
-                        <i class="fas fa-warehouse"></i>
+                        <img src="assets/images/warehouse-icon.svg" alt="仓库配送">
                     </div>
-                    <img src="assets/images/warehouse-icon.svg" class="floating-icon" alt="Warehouse Icon">
-                    <h3>仓库·配送</h3>
+                    <h3>仓库・配送</h3>
                     <p>我们珍视客户所托，定将其重要货物如期送达，不负所望。同时，对于客户的细致需求与特殊条件，将竭尽所能，全力提升服务品质，不负每一份信任。</p>
-                    <a href="#" class="feature-btn"><i class="fas fa-arrow-right"></i></a>
+                    <a href="service.html?service=warehouse#warehouse-service" id="warehouse-service-btn" class="feature-btn">了解更多 <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -286,6 +416,57 @@
                             <img src="assets/images/logo.png" alt="合作伙伴">
                         </div>
                         <!-- 第一行第二组logo (复制一份用于无缝滚动) -->
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="assets/images/logo.png" alt="合作伙伴">
+                        </div>
                         <div class="partner-logo">
                             <img src="assets/images/logo.png" alt="合作伙伴">
                         </div>
@@ -617,6 +798,23 @@
                     console.log(`已切换至${langText}版本`);
                 });
             });
+            
+            // 处理首页货物追踪搜索
+            const trackingSearchBtn = document.getElementById('tracking-search-btn');
+            const trackingNumberInput = document.getElementById('tracking-number-input');
+            
+            if(trackingSearchBtn && trackingNumberInput) {
+                trackingSearchBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const trackingNumber = trackingNumberInput.value.trim();
+                    if(trackingNumber) {
+                        // 将追踪号作为参数传递到追踪页面
+                        window.location.href = 'tracking.html?number=' + encodeURIComponent(trackingNumber);
+                    } else {
+                        alert('请输入有效的订单号');
+                    }
+                });
+            }
         });
     </script>
     
@@ -696,6 +894,37 @@
                 });
             }
         });
+    </script>
+
+    <!-- 修复跳转脚本，确保能正确跳转到service页面对应的标签页 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 服务卡片跳转功能
+        const bookingBtn = document.getElementById('booking-service-btn');
+        const customsBtn = document.getElementById('customs-service-btn');
+        const warehouseBtn = document.getElementById('warehouse-service-btn');
+        
+        if(bookingBtn) {
+            bookingBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'service.html?service=booking#booking-service';
+            });
+        }
+        
+        if(customsBtn) {
+            customsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'service.html?service=customs#customs-service';
+            });
+        }
+        
+        if(warehouseBtn) {
+            warehouseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'service.html?service=warehouse#warehouse-service';
+            });
+        }
+    });
     </script>
 </body>
 </html> 

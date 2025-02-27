@@ -432,10 +432,10 @@
                     </div>
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="index.html">首页</a></li>
-                            <li><a href="tracking.html" class="active">货物追踪</a></li>
-                            <li><a href="#">业务介绍</a></li>
-                            <li><a href="#">资讯中心</a></li>
+                            <li><a href="./index.html">首页</a></li>
+                            <li><a href="./tracking.html" class="active">货物追踪</a></li>
+                            <li><a href="./service.html">业务介绍</a></li>
+                            <li><a href="./news.html">资讯中心</a></li>
                             <li><a href="#">关于我们</a></li>
                         </ul>
                     </nav>
@@ -476,6 +476,23 @@
                         查询
                     </button>
                 </div>
+                
+                <!-- 添加搜索历史记录 -->
+                <div class="search-history" id="search-history" style="display: none; margin-top: 10px; font-size: 14px;">
+                    <span style="color: #666;">最近搜索: </span>
+                    <div class="history-items" id="history-items"></div>
+                </div>
+            </div>
+
+            <!-- 添加加载状态和错误处理 -->
+            <div id="loading-indicator" style="display: none; text-align: center; padding: 30px;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 30px; color: #1e5aa0;"></i>
+                <p style="margin-top: 10px; color: #666;">正在查询，请稍候...</p>
+            </div>
+
+            <div id="error-message" style="display: none; text-align: center; padding: 30px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 30px; color: #f44336;"></i>
+                <p id="error-text" style="margin-top: 10px; color: #666;">查询失败，请稍后重试</p>
             </div>
 
             <!-- 追踪结果 -->
@@ -701,12 +718,19 @@
             const searchBtn = document.getElementById('search-btn');
             const trackingResults = document.getElementById('tracking-results');
             
+            // 初始隐藏结果区域
+            if(trackingResults) {
+                trackingResults.style.display = 'none';
+            }
+            
             if(searchBtn) {
                 searchBtn.addEventListener('click', function() {
                     // 显示结果区域（实际项目中这里会发送API请求）
-                    trackingResults.style.display = 'flex';
-                    // 滚动到结果区域
-                    trackingResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if(trackingResults) {
+                        trackingResults.style.display = 'flex';
+                        // 滚动到结果区域
+                        trackingResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 });
             }
             
@@ -815,6 +839,143 @@
                     if(!searchTypeSelector.contains(e.target)) {
                         searchTypeSelector.classList.remove('active');
                     }
+                });
+            }
+            
+            // 处理URL参数
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+            
+            // 获取追踪号并填充搜索框
+            const trackingNumber = getUrlParameter('number');
+            const trackingInput = document.getElementById('tracking-input');
+            
+            if(trackingNumber && trackingInput) {
+                trackingInput.value = trackingNumber;
+                // 自动触发搜索
+                if(searchBtn) {
+                    // 延迟一下以确保DOM已完全加载
+                    setTimeout(function() {
+                        searchBtn.click();
+                    }, 500);
+                }
+            }
+            
+            // 搜索历史记录功能
+            const historyContainer = document.getElementById('search-history');
+            const historyItems = document.getElementById('history-items');
+            
+            // 加载历史记录
+            function loadSearchHistory() {
+                const history = JSON.parse(localStorage.getItem('trackingHistory') || '[]');
+                
+                if(history.length > 0) {
+                    historyContainer.style.display = 'block';
+                    historyItems.innerHTML = '';
+                    
+                    history.slice(0, 5).forEach(function(item) {
+                        const historyItem = document.createElement('a');
+                        historyItem.href = '#';
+                        historyItem.textContent = item;
+                        historyItem.className = 'history-item';
+                        historyItem.style.marginRight = '15px';
+                        historyItem.style.color = '#1e5aa0';
+                        
+                        historyItem.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            trackingInput.value = item;
+                            searchBtn.click();
+                        });
+                        
+                        historyItems.appendChild(historyItem);
+                    });
+                }
+            }
+            
+            // 保存搜索历史
+            function saveSearchHistory(number) {
+                if(!number) return;
+                
+                let history = JSON.parse(localStorage.getItem('trackingHistory') || '[]');
+                
+                // 避免重复
+                if(history.includes(number)) {
+                    history = history.filter(item => item !== number);
+                }
+                
+                // 添加到开头
+                history.unshift(number);
+                
+                // 限制数量
+                if(history.length > 10) {
+                    history = history.slice(0, 10);
+                }
+                
+                localStorage.setItem('trackingHistory', JSON.stringify(history));
+                loadSearchHistory();
+            }
+            
+            // 加载初始历史记录
+            loadSearchHistory();
+            
+            // 搜索按钮添加历史记录功能
+            if(searchBtn) {
+                const originalClick = searchBtn.onclick;
+                searchBtn.onclick = function() {
+                    const number = trackingInput.value.trim();
+                    if(number) {
+                        saveSearchHistory(number);
+                    }
+                    
+                    // 显示结果区域
+                    if(trackingResults) {
+                        trackingResults.style.display = 'flex';
+                        trackingResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                };
+            }
+
+            // 添加加载状态和错误处理
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const errorMessage = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            
+            // 搜索按钮点击事件增强
+            if(searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    const trackingNumber = trackingInput.value.trim();
+                    
+                    if(!trackingNumber) {
+                        alert('请输入有效的查询号码');
+                        return;
+                    }
+                    
+                    // 显示加载状态
+                    if(trackingResults) trackingResults.style.display = 'none';
+                    if(errorMessage) errorMessage.style.display = 'none';
+                    if(loadingIndicator) loadingIndicator.style.display = 'block';
+                    
+                    // 模拟API请求
+                    setTimeout(function() {
+                        // 隐藏加载状态
+                        if(loadingIndicator) loadingIndicator.style.display = 'none';
+                        
+                        // 这里应该是实际的API请求处理
+                        // 如果成功，显示结果区域
+                        if(trackingResults) {
+                            trackingResults.style.display = 'flex';
+                            trackingResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                        
+                        // 如果失败，显示错误信息
+                        // 如: errorMessage.style.display = 'block';
+                        // errorText.textContent = '未找到该订单号的信息';
+                        
+                    }, 1000); // 模拟1秒的API请求时间
                 });
             }
         });

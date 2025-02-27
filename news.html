@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资讯中心 - WallTech B2B平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 引入字体图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 资讯中心页面样式 */
+        .news-banner {
+            background-image: url('assets/images/bg1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 120px 0 0 0;
+            color: #fff;
+            display: flex;
+            align-items: flex-end;
+            min-height: 330px;
+        }
+        
+        .news-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 18, 50, 0.7);
+        }
+        
+        .news-banner .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+            justify-content: flex-start;
+        }
+        
+        .news-banner h1 {
+            position: relative;
+            text-align: left;
+            font-size: 32px;
+            margin: 0;
+            padding: 0 0 30px 0;
+        }
+        
+        .news-section {
+            padding: 30px 0;
+            background-color: #f8f9ff;
+        }
+        
+        /* 新闻表格样式 */
+        .news-table {
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .news-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .news-table th {
+            background-color: #f2f6fc;
+            color: #333;
+            font-weight: 600;
+            text-align: center;
+            vertical-align: middle;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e9f2;
+        }
+        
+        .news-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e9f2;
+            color: #555;
+            vertical-align: middle;
+        }
+        
+        .news-table tr:hover {
+            background-color: #f8faff;
+        }
+        
+        .news-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .news-table a {
+            color: #1e5aa0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .news-table a:hover {
+            color: #0c3b76;
+            text-decoration: underline;
+        }
+        
+        .download-cell {
+            text-align: center !important;
+        }
+        
+        .time-cell {
+            text-align: center !important;
+            padding-right: 30px;
+        }
+        
+        .pdf-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .pagination a, .pagination span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 4px;
+            background: #fff;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #e5e9f2;
+            font-size: 14px;
+        }
+        
+        .pagination a:hover {
+            background: #f0f5ff;
+            color: #1e5aa0;
+            border-color: #1e5aa0;
+        }
+        
+        .pagination .active {
+            background: #1e5aa0;
+            color: #fff;
+            border-color: #1e5aa0;
+        }
+        
+        .pagination .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <a href="tel:021-65143931" class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>客服电话: 021-65143931转826</span>
+                        </a>
+                        <a href="mailto:b2b-service@walltechsystem.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>邮箱: b2b-service@walltechsystem.com</span>
+                        </a>
+                    </div>
+                    <div class="language-selector">
+                        <div class="current-lang">
+                            <i class="fas fa-globe"></i>
+                            <span class="current-lang-text">中文</span>
+                            <i class="fas fa-chevron-down" style="font-size: 10px; background: none; width: auto; height: auto;"></i>
+                        </div>
+                        <div class="lang-options">
+                            <a href="#" class="lang-option active" data-lang="zh">中文</a>
+                            <a href="#" class="lang-option" data-lang="en">English</a>
+                            <a href="#" class="lang-option" data-lang="jp">日本語</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="B2B平台 Logo">
+                        </a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="./index.html">首页</a></li>
+                            <li><a href="./tracking.html">货物追踪</a></li>
+                            <li><a href="./service.html">业务介绍</a></li>
+                            <li><a href="./news.html" class="active">资讯中心</a></li>
+                            <li><a href="#">关于我们</a></li>
+                        </ul>
+                    </nav>
+                    <div class="action-btn">
+                        <a href="#" class="btn btn-primary">注册/登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 顶部横幅 -->
+    <section class="news-banner">
+        <div class="container">
+            <h1>资讯中心</h1>
+        </div>
+    </section>
+
+    <!-- 资讯中心内容区域 -->
+    <section class="news-section">
+        <div class="container">
+            <!-- 资讯表格 -->
+            <div class="news-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 65%;">标题</th>
+                            <th style="width: 80px;">下载</th>
+                            <th style="width: 180px;">发布时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#">2025年4月 上海/宁波/青岛港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-03-25 10:30</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2025年4月 广州/深圳/厦门港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-03-25 10:15</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">关于清明节假期安排的通知</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-03-20 14:30</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2025年3月 上海/宁波港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-02-22 09:15</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2025年3月 天津/大连港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-02-21 16:43</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2025年3月 石岛/连云/青岛港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-02-21 16:43</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2025年3月 宁波/牛浦港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-02-21 16:43</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2025年3月 福州/厦门港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-02-20 14:35</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2025年3月 广州/深圳港 船期表</a></td>
+                            <td class="download-cell"><a href="#"><img src="assets/images/pdf.png" alt="PDF" class="pdf-icon"></a></td>
+                            <td class="time-cell">2025-02-20 14:30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 分页控件 -->
+            <div class="pagination">
+                <a href="#" class="disabled"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span>...</span>
+                <a href="#">10</a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="WallTech B2B Logo">
+                    <p>选择 WallTech B2B 是您业务合作的明智之选。我们致力于为您提供最优质的B2B服务体验。</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="xiaohongshu"><span>小红书</span></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>地址</h3>
+                        <ul>
+                            <li>上海市虹口区<br>周家嘴路699号中垠广场A座9F<br><br>工作时间：<br>周一至周五  9:00-18:00</li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>关于我们</h3>
+                        <ul>
+                            <li><a href="about.html#company-profile">公司简介</a></li>
+                            <li><a href="about.html#development-history">发展历程</a></li>
+                            <li><a href="about.html#corporate-culture">企业文化</a></li>
+                            <li><a href="about.html#contact-us">联系我们</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>隐私政策</h3>
+                        <ul>
+                            <li><a href="#">用户协议</a></li>
+                            <li><a href="#">隐私条款</a></li>
+                            <li><a href="#">Cookie政策</a></li>
+                            <li><a href="#">信息安全</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 All Rights Reserved 版权所有:上海沃行信息技术有限公司 沪ICP备07034486号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 悬浮客服图标 -->
+    <div class="floating-service">
+        <div class="service-icon" id="serviceIcon">
+            <img src="assets/images/chat.png" alt="在线客服">
+        </div>
+    </div>
+    
+    <!-- 引入Coze Chat SDK脚本 -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化Coze Chat客户端
+            window.cozeWebChatClient = new CozeWebSDK.WebChatClient({
+                config: {
+                    bot_id: '7476024207646769178'
+                },
+                componentProps: {
+                    title: 'AI智能客服',
+                    chatIcon: 'assets/images/chat.png',
+                    chatBtnStyle: {
+                        display: 'none' // 隐藏默认的聊天按钮，使用我们自定义的按钮
+                    },
+                    defaultOpen: false, // 默认不打开
+                    containerStyle: {
+                        zIndex: 10000 // 确保层级高于页面其他元素
+                    }
+                },
+                auth: {
+                    type: 'token',
+                    token: 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ',
+                    onRefreshToken: function() {
+                        return 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ';
+                    }
+                }
+            });
+            
+            // 点击客服图标显示聊天窗口
+            const serviceIcon = document.getElementById('serviceIcon');
+            if(serviceIcon) {
+                serviceIcon.addEventListener('click', function() {
+                    if (window.cozeWebChatClient) {
+                        if (window.cozeWebChatClient.open && typeof window.cozeWebChatClient.open === 'function') {
+                            window.cozeWebChatClient.open();
+                        } else if (window.cozeWebChatClient.component && window.cozeWebChatClient.component.setOpen) {
+                            window.cozeWebChatClient.component.setOpen(true);
+                        } else {
+                            console.error('无法找到打开聊天窗口的方法，请检查Coze SDK版本');
+                        }
+                    }
+                });
+            }
+            
+            // 语言切换功能
+            const langOptions = document.querySelectorAll('.lang-option');
+            const currentLangText = document.querySelector('.current-lang-text');
+            
+            langOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    langOptions.forEach(lang => lang.classList.remove('active'));
+                    
+                    // 添加active类到当前选项
+                    this.classList.add('active');
+                    
+                    // 更新当前语言显示
+                    const langText = this.textContent.trim();
+                    currentLangText.textContent = langText;
+                    
+                    // 存储用户语言偏好
+                    localStorage.setItem('preferredLanguage', this.getAttribute('data-lang'));
+                    
+                    // 临时输出语言切换信息
+                    console.log(`已切换至${langText}版本`);
+                });
+            });
+            
+            // 导航菜单高亮
+            const currentLocation = location.href;
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                if(link.href === currentLocation) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // 新闻分类切换
+            const categoryItems = document.querySelectorAll('.category-item');
+            
+            categoryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // 移除所有active类
+                    categoryItems.forEach(i => i.classList.remove('active'));
+                    
+                    // 添加active类到当前项
+                    this.classList.add('active');
+                    
+                    // 这里应该添加筛选新闻的逻辑
+                    console.log(`已切换到分类: ${this.textContent}`);
+                });
+            });
+            
+            // 分页功能
+            const pageLinks = document.querySelectorAll('.page-link');
+            
+            pageLinks.forEach(link => {
+                if(!link.parentElement.classList.contains('disabled')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // 移除所有active类
+                        document.querySelectorAll('.page-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        
+                        // 如果是数字页码，添加active类
+                        if(this.textContent.trim() !== '«' && this.textContent.trim() !== '»') {
+                            this.parentElement.classList.add('active');
+                        }
+                        
+                        // 这里应该添加页面切换逻辑
+                        console.log(`已切换到页码: ${this.textContent}`);
+                        
+                        // 滚动到页面顶部
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

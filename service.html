@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>业务介绍 - WallTech B2B平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 引入字体图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 内联样式，确保页面显示正确 -->
+    <style>
+        /* 整体风格优化 */
+        body {
+            font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 服务横幅优化 */
+        .service-banner {
+            background: linear-gradient(135deg, #1e5aa0, #072a60);
+            background-size: cover;
+            position: relative;
+            padding: 100px 0 80px;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .service-banner h1 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .service-banner p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* 服务导航优化 */
+        .service-nav-section {
+            background: #fff;
+            padding: 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .service-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .service-nav-item {
+            flex: 1;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 25px 15px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #1e5aa0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-nav-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 90, 160, 0.15);
+        }
+        
+        .service-nav-item:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .service-nav-item.active {
+            background: linear-gradient(135deg, #1e5aa0, #0f3b72);
+            color: white;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 90, 160, 0.25);
+        }
+        
+        .service-nav-item.active::after {
+            transform: scaleX(1);
+            background: #ff9800;
+        }
+        
+        .service-nav-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        
+        .service-nav-icon i {
+            font-size: 46px;
+            color: #1e5aa0;
+            transition: all 0.3s ease;
+        }
+        
+        .service-nav-item.active .service-nav-icon i {
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .service-nav-text {
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        /* 服务详情内容优化 */
+        .service-details-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+        }
+        
+        .service-detail {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .service-detail.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .service-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .service-header h2 {
+            font-size: 36px;
+            color: #1e5aa0;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .service-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 80px;
+            height: 3px;
+            background: #1e5aa0;
+            transform: translateX(-50%);
+        }
+        
+        .service-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 30px auto 0;
+            line-height: 1.8;
+        }
+        
+        /* 服务简介部分优化 */
+        .service-intro {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        
+        .intro-text {
+            flex: 1.2;
+        }
+        
+        .intro-text h3 {
+            font-size: 26px;
+            color: #222;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .intro-text h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            height: 70%;
+            width: 4px;
+            background: #1e5aa0;
+            border-radius: 2px;
+        }
+        
+        .intro-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .intro-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 350px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .intro-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+        
+        /* 服务流程优化 */
+        .process-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            bottom: 60px;
+            left: 40px;
+            width: 3px;
+            background: linear-gradient(to bottom, #1e5aa0, #3e88cb);
+            border-radius: 3px;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 40px;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 26px;
+            top: 0;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #1e5aa0, #0d4689);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 20px rgba(30,90,160,0.3);
+            z-index: 2;
+        }
+        
+        .step-content {
+            background: #f9faff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .step-content h4 {
+            font-size: 20px;
+            color: #1e5aa0;
+            margin-bottom: 15px;
+        }
+        
+        .step-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* FAQ样式优化 */
+        .service-faq {
+            max-width: 900px;
+            margin: 0 auto 80px;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .faq-header h3 {
+            font-size: 28px;
+            color: #1e5aa0;
+            margin-bottom: 15px;
+        }
+        
+        .faq-list {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9ff;
+        }
+        
+        .faq-item.active .faq-question {
+            color: #1e5aa0;
+        }
+        
+        .faq-question i {
+            color: #1e5aa0;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+        }
+        
+        .faq-answer p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 992px) {
+            .service-intro {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            .intro-image {
+                width: 100%;
+                margin-top: 30px;
+            }
+            
+            .service-navigation {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .service-nav-item {
+                min-width: 160px;
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-banner h1 {
+                font-size: 32px;
+            }
+            
+            .service-header h2 {
+                font-size: 28px;
+            }
+            
+            .intro-text h3 {
+                font-size: 22px;
+            }
+            
+            .process-timeline {
+                padding: 30px 20px;
+            }
+            
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                left: 16px;
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+        
+        /* 服务特点部分美化 */
+        .service-features-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #fff 0%, #f8f9ff 100%);
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .features-header h2 {
+            font-size: 32px;
+            color: #1e5aa0;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .features-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 3px;
+            background: #1e5aa0;
+            transform: translateX(-50%);
+        }
+        
+        .features-header p {
+            font-size: 17px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .service-features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            padding: 25px 15px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30,90,160,0.15);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #1e5aa0, #3e88cb);
+            z-index: 2;
+        }
+        
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            margin: 30px auto 20px;
+        }
+        
+        .feature-icon i {
+            font-size: 40px;
+            color: #1e5aa0;
+        }
+        
+        .feature-content {
+            padding: 0 25px 30px;
+            text-align: center;
+        }
+        
+        .feature-content h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .feature-content p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 992px) {
+            .service-features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .service-features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 添加顶部横幅样式，确保与news和tracking页面一致 */
+        .page-banner {
+            background-color: #1e5aa0;
+            background-image: linear-gradient(135deg, rgba(30, 90, 160, 0.9), rgba(7, 42, 96, 0.85));
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .page-banner h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .breadcrumb a {
+            color: white;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+        
+        .breadcrumb .separator {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        .breadcrumb .current-page {
+            opacity: 0.7;
+        }
+        
+        .banner-bg-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/images/plane-bg.svg');
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <a href="tel:021-65143931" class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>客服电话: 021-65143931转826</span>
+                        </a>
+                        <a href="mailto:b2b-service@walltechsystem.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>邮箱: b2b-service@walltechsystem.com</span>
+                        </a>
+                    </div>
+                    <div class="language-selector">
+                        <div class="current-lang">
+                            <i class="fas fa-globe"></i>
+                            <span class="current-lang-text">中文</span>
+                            <i class="fas fa-chevron-down" style="font-size: 10px; background: none; width: auto; height: auto;"></i>
+                        </div>
+                        <div class="lang-options">
+                            <a href="#" class="lang-option active" data-lang="zh">中文</a>
+                            <a href="#" class="lang-option" data-lang="en">English</a>
+                            <a href="#" class="lang-option" data-lang="jp">日本語</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <img src="assets/images/logo.png" alt="B2B平台 Logo">
+                        </a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="./index.html">首页</a></li>
+                            <li><a href="./tracking.html">货物追踪</a></li>
+                            <li><a href="./service.html" class="active">业务介绍</a></li>
+                            <li><a href="./news.html">资讯中心</a></li>
+                            <li><a href="#">关于我们</a></li>
+                        </ul>
+                    </nav>
+                    <div class="action-btn">
+                        <a href="#" class="btn btn-primary">注册/登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 更新横幅样式，去掉中心标题 -->
+    <section class="page-banner" style="height:330px; background-image:url('assets/images/bg1.jpg'); background-size:cover; background-position:center; position:relative;">
+        <!-- 深色蒙版 -->
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,32,75,0.7);"></div>
+    </section>
+
+    <!-- 添加左下角标题，与资讯中心页面一致 -->
+    <div class="container" style="position:relative; margin-top:-60px; margin-bottom:30px; z-index:5;">
+        <h1 style="color:white; font-size:36px; font-weight:600; margin:0; text-shadow:0 2px 10px rgba(0,0,0,0.3);">业务介绍</h1>
+    </div>
+
+    <!-- 服务导航卡片 - 全新炫酷设计 -->
+    <section class="service-cards" style="padding:40px 0; background:#f8f9ff;">
+        <div class="container" style="max-width:1140px;">
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:40px; margin:0 auto;">
+                <!-- 订舱服务卡片 -->
+                <div class="service-card active" style="background:#1e5aa0; color:white; text-align:center; padding:40px 25px; border-radius:10px; box-shadow:0 15px 35px rgba(30,90,160,0.25); cursor:pointer; position:relative; overflow:hidden; transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);" data-service="booking">
+                    <!-- 背景装饰 -->
+                    <div style="position:absolute; top:-30px; right:-30px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.1);"></div>
+                    <div style="position:absolute; bottom:-20px; left:-20px; width:80px; height:80px; border-radius:50%; background:rgba(255,255,255,0.1);"></div>
+                    
+                    <div style="position:relative; z-index:2;">
+                        <div style="margin-bottom:25px; transform:translateY(0); transition:transform 0.3s ease;">
+                            <img src="assets/images/shipping-icon.svg" alt="订舱服务" style="height:80px; width:auto; filter:brightness(0) invert(1);">
+                        </div>
+                        <h3 style="font-size:22px; margin:0 0 15px; font-weight:600;">订舱服务</h3>
+                        <p style="margin:0; opacity:0.8; font-size:14px;">高效便捷的全球订舱系统，为您提供实时运价与舱位</p>
+                    </div>
+                </div>
+                
+                <!-- 通关检查卡片 -->
+                <div class="service-card" style="background:white; color:#333; text-align:center; padding:40px 25px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.1); cursor:pointer; position:relative; overflow:hidden; transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);" data-service="customs">
+                    <!-- 背景装饰 -->
+                    <div style="position:absolute; top:-30px; right:-30px; width:120px; height:120px; border-radius:50%; background:rgba(30,90,160,0.05);"></div>
+                    <div style="position:absolute; bottom:-20px; left:-20px; width:80px; height:80px; border-radius:50%; background:rgba(30,90,160,0.05);"></div>
+                    
+                    <div style="position:relative; z-index:2;">
+                        <div style="margin-bottom:25px; transform:translateY(0); transition:transform 0.3s ease;">
+                            <img src="assets/images/customs-icon.svg" alt="通关检查" style="height:80px; width:auto; filter:grayscale(0);">
+                        </div>
+                        <h3 style="font-size:22px; margin:0 0 15px; font-weight:600; color:#1e5aa0;">通关检查</h3>
+                        <p style="margin:0; color:#666; font-size:14px;">专业通关团队，为您解决各类报关和检验检疫难题</p>
+                    </div>
+                </div>
+                
+                <!-- 仓库配送卡片 -->
+                <div class="service-card" style="background:white; color:#333; text-align:center; padding:40px 25px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.1); cursor:pointer; position:relative; overflow:hidden; transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);" data-service="warehouse">
+                    <!-- 背景装饰 -->
+                    <div style="position:absolute; top:-30px; right:-30px; width:120px; height:120px; border-radius:50%; background:rgba(30,90,160,0.05);"></div>
+                    <div style="position:absolute; bottom:-20px; left:-20px; width:80px; height:80px; border-radius:50%; background:rgba(30,90,160,0.05);"></div>
+                    
+                    <div style="position:relative; z-index:2;">
+                        <div style="margin-bottom:25px; transform:translateY(0); transition:transform 0.3s ease;">
+                            <img src="assets/images/warehouse-icon.svg" alt="仓库配送" style="height:80px; width:auto; filter:grayscale(0);">
+                        </div>
+                        <h3 style="font-size:22px; margin:0 0 15px; font-weight:600; color:#1e5aa0;">仓库配送</h3>
+                        <p style="margin:0; color:#666; font-size:14px;">高效仓储管理与配送服务，优化您的供应链</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务详情内容 -->
+    <section class="service-details-section">
+        <div class="container">
+            <!-- 订舱服务详情内容 -->
+            <div id="booking-service" class="service-detail active">
+                <div class="service-header">
+                    <div class="service-icon-large">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h2>订舱服务</h2>
+                    <p class="service-subtitle">全球航线覆盖，专业运输解决方案</p>
+                </div>
+                
+                <div class="service-content">
+                    <div class="service-intro">
+                        <div class="intro-text">
+                            <h3>服务概述</h3>
+                            <p>我们提供全面的海运订舱服务，覆盖全球主要港口和航线，确保您的货物安全、准时地运送到目的地。无论是整箱(FCL)还是拼箱(LCL)，我们都能为您提供最合适的运输方案。</p>
+                            <p>我们的专业团队将协助您处理所有订舱流程，包括舱位预订、运费计算、航期安排等，让您的货物运输更加便捷高效。</p>
+                        </div>
+                        <div class="intro-image">
+                            <img src="assets/images/booking-service.jpg" alt="订舱服务">
+                        </div>
+                    </div>
+
+                    <div class="service-features" style="margin-top:60px; padding:40px 0;">
+                        <h3 style="text-align:center; font-size:28px; color:#1e5aa0; margin-bottom:40px;">服务特点</h3>
+                        
+                        <div style="display:flex; flex-wrap:wrap; gap:25px; max-width:1200px; margin:0 auto; justify-content:center;">
+                            <!-- 特点卡片1 -->
+                            <div style="flex:1; min-width:250px; max-width:280px; background:white; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px 20px; text-align:center;">
+                                <div style="font-size:46px; color:#1e5aa0; margin-bottom:20px;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h3 style="font-size:20px; color:#333; margin-bottom:15px;">全球航线覆盖</h3>
+                                <p style="color:#666; line-height:1.6;">覆盖亚洲、欧洲、美洲、非洲等全球主要航线和港口</p>
+                            </div>
+                            
+                            <!-- 特点卡片2 -->
+                            <div style="flex:1; min-width:250px; max-width:280px; background:white; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px 20px; text-align:center;">
+                                <div style="font-size:46px; color:#1e5aa0; margin-bottom:20px;">
+                                    <i class="fas fa-truck-fast"></i>
+                                </div>
+                                <h3 style="font-size:20px; color:#333; margin-bottom:15px;">高效订舱流程</h3>
+                                <p style="color:#666; line-height:1.6;">简化订舱流程，通过B2B平台快速获取舱位确认</p>
+                            </div>
+                            
+                            <!-- 特点卡片3 -->
+                            <div style="flex:1; min-width:250px; max-width:280px; background:white; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px 20px; text-align:center;">
+                                <div style="font-size:46px; color:#1e5aa0; margin-bottom:20px;">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 style="font-size:20px; color:#333; margin-bottom:15px;">实时运价查询</h3>
+                                <p style="color:#666; line-height:1.6;">提供最新市场运价，确保您获得最具竞争力的价格</p>
+                            </div>
+                            
+                            <!-- 特点卡片4 -->
+                            <div style="flex:1; min-width:250px; max-width:280px; background:white; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px 20px; text-align:center;">
+                                <div style="font-size:46px; color:#1e5aa0; margin-bottom:20px;">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <h3 style="font-size:20px; color:#333; margin-bottom:15px;">精准船期信息</h3>
+                                <p style="color:#666; line-height:1.6;">提供准确的船期信息，帮助您更好地规划物流时间</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-process">
+                        <div class="process-timeline">
+                            <h3 class="process-title" style="text-align:center; margin-bottom:40px; color:#1e5aa0; font-size:24px;">
+                                订舱流程
+                            </h3>
+                            <div class="process-step">
+                                <div class="step-number">01</div>
+                                <div class="step-content">
+                                    <h4>需求提交</h4>
+                                    <p>通过B2B平台或客服提交订舱需求，包括货物信息、出发港、目的港等</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">02</div>
+                                <div class="step-content">
+                                    <h4>方案确认</h4>
+                                    <p>我们根据您的需求提供运输方案和报价，确认后进行订舱</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">03</div>
+                                <div class="step-content">
+                                    <h4>订舱确认</h4>
+                                    <p>获取船公司订舱确认，并向您发送订舱确认书</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">04</div>
+                                <div class="step-content">
+                                    <h4>装船运输</h4>
+                                    <p>货物按计划装船，我们全程监控运输状态</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">05</div>
+                                <div class="step-content">
+                                    <h4>到港通知</h4>
+                                    <p>货物抵达目的港后，我们会及时通知您安排提货</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 添加通关检查服务内容 -->
+            <div id="customs-service" class="service-detail">
+                <div class="service-header">
+                    <h2>通关检查服务</h2>
+                    <p>我们提供专业高效的通关服务，帮助您的货物顺利通过海关检查，确保贸易合规性</p>
+                </div>
+                
+                <div class="service-intro">
+                    <div class="intro-text">
+                        <h3>通关检查概述</h3>
+                        <p>通关检查是国际贸易中不可或缺的环节，涉及复杂的海关法规和检验检疫要求。我们的专业团队精通各国的通关政策和程序，为您提供全方位的通关支持，最大限度减少货物延误和额外费用。</p>
+                        <p>无论是进口还是出口，我们都能提供定制化的通关解决方案，确保您的货物快速高效地通过海关，同时严格遵守相关法规和要求。</p>
+                    </div>
+                    <div class="intro-image">
+                        <img src="assets/images/customs-service.jpg" alt="通关检查服务" style="max-width:100%; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+                
+                <div class="service-features">
+                    <h3 class="features-title" style="text-align:center; margin-bottom:40px; font-size:28px; color:#333; position:relative;">
+                        我们的通关检查服务包括
+                        <span style="display:block; width:60px; height:3px; background:#1e5aa0; margin:15px auto 0;"></span>
+                    </h3>
+                    
+                    <div class="features-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:30px; margin-top:40px;">
+                        <!-- 通关文件准备 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-file-contract" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">通关文件准备</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">专业准备和审核所有必要的通关文件，包括报关单、提单、发票、装箱单、原产地证明等，确保文件准确无误。</p>
+                        </div>
+                        
+                        <!-- 海关申报 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-clipboard-check" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">海关申报</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">代理完成海关申报程序，包括商品编码确定、关税计算、关税缴纳等，确保申报信息准确合规。</p>
+                        </div>
+                        
+                        <!-- 检验检疫协调 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-search" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">检验检疫协调</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">协调各类检验检疫手续，包括食品安全检测、质量标准认证、植物检疫等，确保符合目的地国家的进口要求。</p>
+                        </div>
+                        
+                        <!-- 贸易合规咨询 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-balance-scale" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">贸易合规咨询</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">提供专业的贸易合规咨询服务，帮助客户了解并遵守各国的进出口法规，避免因不合规而导致的罚款和扣押。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 仓库配送服务详情内容 -->
+            <div id="warehouse-service" class="service-detail">
+                <div class="service-header">
+                    <h2>仓库配送服务</h2>
+                    <p>专业的仓储物流管理，为您的供应链提供全方位支持</p>
+                </div>
+                
+                <div class="service-intro">
+                    <div class="intro-text">
+                        <h3>仓库配送概述</h3>
+                        <p>我们提供完整的仓储物流解决方案，从货物入库、分拣、包装到配送，全程专业管理。我们的仓库配备先进的库存管理系统，确保货物安全存储并按需高效配送。</p>
+                        <p>无论您需要短期存储还是长期仓储管理，我们都能为您提供定制化的服务，满足您的业务需求。</p>
+                    </div>
+                    <div class="intro-image">
+                        <img src="assets/images/warehouse-service.jpg" alt="仓库配送服务" style="max-width:100%; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                <div class="service-features">
+                    <h3 class="features-title" style="text-align:center; margin-bottom:40px; font-size:28px; color:#333; position:relative;">
+                        我们的仓库配送服务包括
+                        <span style="display:block; width:60px; height:3px; background:#1e5aa0; margin:15px auto 0;"></span>
+                    </h3>
+                    
+                    <div class="features-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:30px; margin-top:40px;">
+                        <!-- 仓库存储管理 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-warehouse" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">仓库存储管理</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">提供安全、高效的商品存储空间，配备温湿度控制系统，满足各类商品的存储需求。</p>
+                        </div>
+                        
+                        <!-- 库存跟踪管理 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-barcode" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">库存跟踪管理</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">实时监控库存水平，提供库存数据分析和报告，帮助您优化库存管理策略。</p>
+                        </div>
+                        
+                        <!-- 订单处理与配送 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-truck" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">订单处理与配送</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">高效处理订单，准确拣货包装，并通过最优化的物流路线进行快速配送。</p>
+                        </div>
+                        
+                        <!-- 增值服务 -->
+                        <div class="feature-box" style="background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:30px; transition:all 0.3s ease; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:rgba(30,90,160,0.03);"></div>
+                            
+                            <div class="feature-icon" style="width:70px; height:70px; display:flex; align-items:center; justify-content:center; background:#1e5aa0; border-radius:12px; margin-bottom:20px;">
+                                <i class="fas fa-box-open" style="font-size:28px; color:white;"></i>
+                            </div>
+                            
+                            <h4 style="font-size:20px; margin:0 0 15px; color:#333; font-weight:600;">增值服务</h4>
+                            <p style="margin:0; color:#666; line-height:1.6;">提供商品包装、贴标、质检、退换货处理等增值服务，满足您的个性化需求。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 修复实力展示模块布局 -->
+    <section class="company-strength" style="padding:70px 0; background:#f8f9ff;">
+        <div class="container">
+            <h2 style="text-align:center; font-size:30px; margin-bottom:50px; position:relative; color:#333;">
+                我们的实力展示
+                <span style="display:block; width:60px; height:3px; background:#1e5aa0; margin:15px auto 0;"></span>
+            </h2>
+            
+            <!-- 使用网格布局 -->
+            <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:30px; margin-top:40px;">
+                <!-- 实力展示项目1 -->
+                <div class="strength-item" style="background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:all 0.3s ease;">
+                    <div style="height:220px; overflow:hidden;">
+                        <img src="assets/images/warehouse-facility.jpg" alt="现代化仓储设施" style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;">
+                    </div>
+                    <div style="padding:25px;">
+                        <h3 style="font-size:20px; color:#1e5aa0; margin:0 0 15px;">现代化仓储设施</h3>
+                        <p style="margin:0; color:#666; line-height:1.6; font-size:14px;">我们拥有超过10万平方米的现代化仓储设施，配备先进的货架系统和自动化设备，确保高效的仓储管理。</p>
+                    </div>
+                </div>
+                
+                <!-- 实力展示项目2 -->
+                <div class="strength-item" style="background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:all 0.3s ease;">
+                    <div style="height:220px; overflow:hidden;">
+                        <img src="assets/images/global-network.jpg" alt="全球物流网络" style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;">
+                    </div>
+                    <div style="padding:25px;">
+                        <h3 style="font-size:20px; color:#1e5aa0; margin:0 0 15px;">全球物流网络</h3>
+                        <p style="margin:0; color:#666; line-height:1.6; font-size:14px;">我们与全球超过100个国家和地区建立了紧密的物流合作关系，能够为客户提供全方位的国际物流服务。</p>
+                    </div>
+                </div>
+                
+                <!-- 实力展示项目3 -->
+                <div class="strength-item" style="background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:all 0.3s ease;">
+                    <div style="height:220px; overflow:hidden;">
+                        <img src="assets/images/tech-system.jpg" alt="先进技术系统" style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;">
+                    </div>
+                    <div style="padding:25px;">
+                        <h3 style="font-size:20px; color:#1e5aa0; margin:0 0 15px;">先进技术系统</h3>
+                        <p style="margin:0; color:#666; line-height:1.6; font-size:14px;">我们采用最新的物流管理系统和追踪技术，实现全程可视化管理，为客户提供实时的货物跟踪服务。</p>
+                    </div>
+                </div>
+                
+                <!-- 实力展示项目4 -->
+                <div class="strength-item" style="background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:all 0.3s ease;">
+                    <div style="height:220px; overflow:hidden;">
+                        <img src="assets/images/professional-team.jpg" alt="专业团队" style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;">
+                    </div>
+                    <div style="padding:25px;">
+                        <h3 style="font-size:20px; color:#1e5aa0; margin:0 0 15px;">专业服务团队</h3>
+                        <p style="margin:0; color:#666; line-height:1.6; font-size:14px;">我们拥有一支经验丰富、专业高效的物流服务团队，能够为客户提供专业的咨询和定制化的物流解决方案。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 修改底部咨询区域，使整个区块在页面中居中显示 -->
+    <section class="contact-section" style="padding:60px 0; background:#f8f9ff; display:flex; justify-content:center; align-items:center;">
+        <div class="container" style="max-width:800px; text-align:center;">
+            <h2 style="font-size:32px; color:#1e5aa0; margin-bottom:40px; text-align:center;">需要更多业务咨询?</h2>
+            <p style="font-size:16px; color:#666; line-height:1.7; margin-bottom:40px; text-align:center;">
+                我们的专业团队随时为您提供详细的业务咨询和定制化解决方案，帮助您解决国际贸易和物流中的各种挑战。
+            </p>
+            <div style="text-align:center;">
+                <a href="#" class="btn-primary" style="display:inline-block; background:#1e5aa0; color:white; padding:12px 40px; border-radius:50px; text-decoration:none; font-weight:600; transition:all 0.3s ease; font-size:16px;">联系我们</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="WallTech B2B Logo">
+                    <p>选择 WallTech B2B 是您业务合作的明智之选。我们致力于为您提供最优质的B2B服务体验。</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="xiaohongshu"><span>小红书</span></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>地址</h3>
+                        <ul>
+                            <li>上海市虹口区<br>周家嘴路699号中垠广场A座9F<br><br>工作时间：<br>周一至周五  9:00-18:00</li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>关于我们</h3>
+                        <ul>
+                            <li><a href="#">公司简介</a></li>
+                            <li><a href="#">发展历程</a></li>
+                            <li><a href="#">企业文化</a></li>
+                            <li><a href="#">荣誉资质</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>快速链接</h3>
+                        <ul>
+                            <li><a href="./index.html">首页</a></li>
+                            <li><a href="./tracking.html">货物追踪</a></li>
+                            <li><a href="./service.html">业务介绍</a></li>
+                            <li><a href="./news.html">资讯中心</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>隐私政策</h3>
+                        <ul>
+                            <li><a href="#">用户协议</a></li>
+                            <li><a href="#">隐私条款</a></li>
+                            <li><a href="#">Cookie政策</a></li>
+                            <li><a href="#">信息安全</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 All Rights Reserved 版权所有:上海沃行信息技术有限公司 沪ICP备07034486号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 悬浮客服图标 -->
+    <div class="floating-service">
+        <div class="service-icon" id="serviceIcon">
+            <img src="assets/images/chat.png" alt="在线客服">
+        </div>
+    </div>
+    
+    <!-- 引入Coze Chat SDK脚本 -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化Coze Chat客户端
+            window.cozeWebChatClient = new CozeWebSDK.WebChatClient({
+                config: {
+                    bot_id: '7476024207646769178'
+                },
+                componentProps: {
+                    title: 'AI智能客服',
+                    chatIcon: 'assets/images/chat.png',
+                    chatBtnStyle: {
+                        display: 'none' // 隐藏默认的聊天按钮，使用我们自定义的按钮
+                    },
+                    defaultOpen: false, // 默认不打开
+                    containerStyle: {
+                        zIndex: 10000 // 确保层级高于页面其他元素
+                    }
+                },
+                auth: {
+                    type: 'token',
+                    token: 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ',
+                    onRefreshToken: function() {
+                        return 'pat_PgtN11U2cfEz7AuZi2O9EcRK9bXH6sDt6wH75Vn3B6KJCHMa7El7SQvs1az3B3HZ';
+                    }
+                }
+            });
+            
+            // 点击客服图标显示聊天窗口
+            const serviceIcon = document.getElementById('serviceIcon');
+            if(serviceIcon) {
+                serviceIcon.addEventListener('click', function() {
+                    if (window.cozeWebChatClient) {
+                        if (window.cozeWebChatClient.open && typeof window.cozeWebChatClient.open === 'function') {
+                            window.cozeWebChatClient.open();
+                        } else if (window.cozeWebChatClient.component && window.cozeWebChatClient.component.setOpen) {
+                            window.cozeWebChatClient.component.setOpen(true);
+                        } else {
+                            console.error('无法找到打开聊天窗口的方法，请检查Coze SDK版本');
+                        }
+                    }
+                });
+            }
+            
+            // 语言切换功能
+            const langOptions = document.querySelectorAll('.lang-option');
+            const currentLangText = document.querySelector('.current-lang-text');
+            
+            langOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    langOptions.forEach(lang => lang.classList.remove('active'));
+                    
+                    // 添加active类到当前选项
+                    this.classList.add('active');
+                    
+                    // 更新当前语言显示
+                    const langText = this.textContent.trim();
+                    currentLangText.textContent = langText;
+                    
+                    // 存储用户语言偏好
+                    localStorage.setItem('preferredLanguage', this.getAttribute('data-lang'));
+                    
+                    // 临时输出语言切换信息
+                    console.log(`已切换至${langText}版本`);
+                });
+            });
+            
+            // 服务导航交互
+            const serviceNavItems = document.querySelectorAll('.service-nav-item');
+            const serviceDetails = document.querySelectorAll('.service-detail');
+            
+            serviceNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // 移除所有active类
+                    serviceNavItems.forEach(nav => nav.classList.remove('active'));
+                    serviceDetails.forEach(detail => detail.classList.remove('active'));
+                    
+                    // 添加active类到当前选中项
+                    this.classList.add('active');
+                    document.getElementById(`${target}-service`).classList.add('active');
+                    
+                    // 平滑滚动到内容区域
+                    document.getElementById(`${target}-service`).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+            
+            // 修改FAQ事件处理部分
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const answer = this.nextElementSibling;
+                    const isOpen = faqItem.classList.contains('active');
+                    
+                    // 先把所有FAQ关闭
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        const a = item.querySelector('.faq-answer');
+                        item.classList.remove('active');
+                        if(a) a.style.maxHeight = "0px";
+                    });
+                    
+                    // 如果当前FAQ不是已经打开的，则打开它
+                    if(!isOpen) {
+                        faqItem.classList.add('active');
+                        // 使用scrollHeight动态计算所需的高度
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    }
+                });
+            });
+            
+            // 确保导航链接正常工作
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') !== '#') {
+                    link.addEventListener('click', function(e) {
+                        // 直接导航
+                        const href = this.getAttribute('href');
+                        if(href && href !== '#') {
+                            window.location.href = href;
+                        }
+                    });
+                }
+            });
+            
+            // 确保页面加载时第一个服务选项卡被选中
+            const firstNavItem = document.querySelector('.service-nav-item');
+            const firstServiceDetail = document.querySelector('.service-detail');
+            
+            if(firstNavItem && firstServiceDetail) {
+                setTimeout(function() {
+                    firstNavItem.classList.add('active');
+                    firstServiceDetail.classList.add('active');
+                }, 100);
+            }
+
+            // 服务卡片交互增强
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                // 添加鼠标悬停效果
+                card.addEventListener('mouseenter', function() {
+                    if(!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(-10px)';
+                        this.style.boxShadow = '0 20px 40px rgba(30,90,160,0.15)';
+                        
+                        // 图标上浮动画
+                        const iconDiv = this.querySelector('div[style*="margin-bottom:25px"]');
+                        if(iconDiv) iconDiv.style.transform = 'translateY(-5px)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if(!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                        
+                        // 图标恢复位置
+                        const iconDiv = this.querySelector('div[style*="margin-bottom:25px"]');
+                        if(iconDiv) iconDiv.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                // 点击效果
+                card.addEventListener('click', function() {
+                    // 重置所有卡片样式
+                    serviceCards.forEach(c => {
+                        c.style.background = 'white';
+                        c.style.color = '#333';
+                        c.style.transform = 'translateY(0)';
+                        c.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                        
+                        // 重置图标颜色
+                        const img = c.querySelector('img');
+                        if(img) img.style.filter = 'grayscale(0)';
+                        
+                        // 重置标题颜色
+                        const title = c.querySelector('h3');
+                        if(title) title.style.color = '#1e5aa0';
+                        
+                        // 重置说明文字颜色
+                        const desc = c.querySelector('p');
+                        if(desc) {
+                            desc.style.color = '#666';
+                            desc.style.opacity = '1';
+                        }
+                        
+                        // 重置背景装饰元素
+                        const bgElements = c.querySelectorAll('div[style*="border-radius:50%"]');
+                        bgElements.forEach(el => {
+                            el.style.background = 'rgba(30,90,160,0.05)';
+                        });
+                    });
+                    
+                    // 激活当前卡片
+                    this.style.background = '#1e5aa0';
+                    this.style.color = 'white';
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 20px 40px rgba(30,90,160,0.25)';
+                    
+                    // 设置图标颜色为白色
+                    const img = this.querySelector('img');
+                    if(img) img.style.filter = 'brightness(0) invert(1)';
+                    
+                    // 设置标题为白色
+                    const title = this.querySelector('h3');
+                    if(title) title.style.color = 'white';
+                    
+                    // 设置说明文字为白色半透明
+                    const desc = this.querySelector('p');
+                    if(desc) {
+                        desc.style.color = 'white';
+                        desc.style.opacity = '0.8';
+                    }
+                    
+                    // 设置背景装饰元素
+                    const bgElements = this.querySelectorAll('div[style*="border-radius:50%"]');
+                    bgElements.forEach(el => {
+                        el.style.background = 'rgba(255,255,255,0.1)';
+                    });
+                    
+                    // 显示对应的服务详情（保持原有逻辑）
+                    const serviceType = this.getAttribute('data-service');
+                    document.querySelectorAll('.service-detail').forEach(detail => {
+                        detail.classList.remove('active');
+                    });
+                    document.getElementById(`${serviceType}-service`).classList.add('active');
+                });
+            });
+
+            const featureBoxes = document.querySelectorAll('.feature-box');
+            
+            featureBoxes.forEach(box => {
+                box.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 20px 40px rgba(30,90,160,0.15)';
+                    
+                    // 图标缩放效果
+                    const icon = this.querySelector('.feature-icon');
+                    if(icon) {
+                        icon.style.transform = 'scale(1.1)';
+                        icon.style.transition = 'all 0.3s ease';
+                    }
+                });
+                
+                box.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.08)';
+                    
+                    // 图标恢复
+                    const icon = this.querySelector('.feature-icon');
+                    if(icon) {
+                        icon.style.transform = 'scale(1)';
+                    }
+                });
+            });
+
+            // 添加实力展示卡片的悬停效果
+            const strengthItems = document.querySelectorAll('.strength-item');
+            
+            strengthItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 20px 40px rgba(30,90,160,0.15)';
+                    
+                    // 图片放大效果
+                    const img = this.querySelector('img');
+                    if(img) img.style.transform = 'scale(1.05)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.08)';
+                    
+                    // 图片恢复
+                    const img = this.querySelector('img');
+                    if(img) img.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+
+    <!-- 删除旧的悬浮导航 -->
+    <script>
+    // 移除所有现有的悬浮导航
+    document.addEventListener('DOMContentLoaded', function() {
+        // 移除现有导航
+        const existingNavs = document.querySelectorAll('.floating-nav-fixed, .floating-nav');
+        existingNavs.forEach(nav => nav.remove());
+        
+        // 创建iframe容器
+        const navFrame = document.createElement('iframe');
+        navFrame.id = 'navFrame';
+        navFrame.style.cssText = `
+            position: fixed;
+            left: 50%;
+            margin-left: -700px;
+            top: 400px;
+            width: 80px;
+            height: 220px;
+            border: none;
+            z-index: 99999;
+            background: transparent;
+            pointer-events: auto;
+        `;
+        
+        // iframe内容
+        const frameContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <style>
+                body {
+                    margin: 0;
+                    padding: 0;
+                    font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+                    overflow: hidden;
+                }
+                
+                .nav-container {
+                    background: white;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+                    padding: 15px 10px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 60px;
+                }
+                
+                .nav-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 12px 8px;
+                    margin: 5px 0;
+                    text-decoration: none;
+                    position: relative;
+                    transition: all 0.3s;
+                    cursor: pointer;
+                }
+                
+                .nav-icon {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background: #f0f4f9;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 5px;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+                }
+                
+                .nav-item.active .nav-icon {
+                    background: #1e5aa0;
+                }
+                
+                .nav-icon i {
+                    color: #1e5aa0;
+                    font-size: 18px;
+                }
+                
+                .nav-item.active .nav-icon i {
+                    color: white;
+                }
+                
+                .nav-item span {
+                    font-size: 12px;
+                    color: #333;
+                    text-align: center;
+                    white-space: nowrap;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="nav-container">
+                <div class="nav-item active" data-target="booking">
+                    <div class="nav-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <span>订舱服务</span>
+                </div>
+                
+                <div class="nav-item" data-target="customs">
+                    <div class="nav-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <span>通关检查</span>
+                </div>
+                
+                <div class="nav-item" data-target="warehouse">
+                    <div class="nav-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <span>仓库配送</span>
+                </div>
+            </div>
+            
+            <script>
+                // 获取导航项
+                const navItems = document.querySelectorAll('.nav-item');
+                
+                // 添加点击事件
+                navItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        // 更新激活状态
+                        navItems.forEach(nav => nav.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // 向父页面发送消息
+                        const target = this.getAttribute('data-target');
+                        window.parent.postMessage({
+                            action: 'switchService',
+                            target: target
+                        }, '*');
+                    });
+                });
+            </script>
+        </body>
+        </html>
+        `;
+        
+        // 添加iframe到页面
+        document.body.appendChild(navFrame);
+        
+        // 写入iframe内容
+        setTimeout(() => {
+            const frameDoc = navFrame.contentDocument || navFrame.contentWindow.document;
+            frameDoc.open();
+            frameDoc.write(frameContent);
+            frameDoc.close();
+        }, 0);
+        
+        // 监听iframe消息
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.action === 'switchService') {
+                const target = event.data.target;
+                
+                // 显示对应服务详情
+                const serviceDetails = document.querySelectorAll('.service-detail');
+                serviceDetails.forEach(detail => detail.classList.remove('active'));
+                document.getElementById(`${target}-service`).classList.add('active');
+                
+                // 更新服务卡片状态
+                const serviceCards = document.querySelectorAll('.service-nav-item');
+                serviceCards.forEach(card => {
+                    if (card.getAttribute('data-service') === target) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+                
+                // 平滑滚动到对应区域
+                document.getElementById(`${target}-service`).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    </script>
+
+    <!-- 添加到service.html的DOMContentLoaded事件中 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取URL参数
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // 获取service参数并激活对应标签页
+        const serviceParam = getUrlParameter('service');
+        if(serviceParam) {
+            // 激活对应的导航项
+            const navItems = document.querySelectorAll('.service-nav-item');
+            navItems.forEach(item => {
+                if(item.getAttribute('data-service') === serviceParam) {
+                    // 模拟点击
+                    setTimeout(() => {
+                        item.click();
+                    }, 100);
+                }
+            });
+            
+            // 同时激活悬浮导航
+            const floatNavItems = document.querySelectorAll('.float-nav-item');
+            floatNavItems.forEach(item => {
+                if(item.getAttribute('data-target') === serviceParam) {
+                    // 更新样式
+                    setTimeout(() => {
+                        item.click();
+                    }, 100);
+                }
+            });
+        }
+        
+        // 处理锚点滚动
+        const hash = window.location.hash;
+        if(hash) {
+            setTimeout(() => {
+                const targetElement = document.querySelector(hash);
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }, 300);
+        }
+    });
+    </script>
+</body>
+</html> 
